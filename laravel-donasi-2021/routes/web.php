@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// homepage (non-login)
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route auth
+Auth::routes();
+
+// Route untuk admin
+Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
+    Route::resource('/users', 'UserController', ['except' => ['show', 'create', 'store']]);
+});
+
