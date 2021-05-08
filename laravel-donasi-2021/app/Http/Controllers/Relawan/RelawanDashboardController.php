@@ -9,6 +9,6 @@ class RelawanDashboardController extends Controller
 {
     //
     public function index(){
-        return view('relawan.index');
+        return view('pages.relawan.index');
     }
 }

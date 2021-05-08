@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 
 // Homepage (non-login)
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.home');
 });
 
 // Route auth
