@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-// homepage (non-login)
+// Homepage (non-login)
 Route::get('/', function () {
     return view('welcome');
 });
@@ -23,7 +23,20 @@ Route::get('/', function () {
 Auth::routes();
 
 // Route untuk admin
-Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
+Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:admin-users')->group(function() {
+    Route::get('/index', 'AdminDashboardController@index')->name('index');
     Route::resource('/users', 'UserController', ['except' => ['show', 'create', 'store']]);
 });
 
+// Route untuk relawan
+Route::namespace('Relawan')->prefix('relawan')->name('relawan.')->middleware('can:relawan-users')->group(function() {
+    Route::get('/index', 'RelawanDashboardController@index')->name('index');
+});
+
+// Route Logout
+Route::get('/logout', function(){
+    //logout user
+    Auth::logout();
+    // redirect to homepage
+    return redirect('/');
+});
