@@ -30,6 +30,13 @@
                         <span>Register</span>
                     </a>
                 </li>
+                @else
+                <li class="sidebar-item  ">
+                    <a href="{{ route('logout') }}" class='sidebar-link'>
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
                 @endif
 
                 {{-- Jangan di hapus ini buat nyatet --}}
