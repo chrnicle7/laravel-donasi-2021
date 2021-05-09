@@ -24,7 +24,7 @@ Auth::routes();
 
 // Route untuk admin
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:admin-users')->group(function() {
-    Route::get('/', 'AdminDashboardController@index')->name('');
+    Route::get('/', 'AdminDashboardController@index')->name('index');
     Route::resource('/users', 'UserController', ['except' => ['show', 'create', 'store']]);
 });
 
