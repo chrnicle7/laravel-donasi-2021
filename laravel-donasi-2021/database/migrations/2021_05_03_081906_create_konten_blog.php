@@ -22,8 +22,8 @@ class CreateKontenBlog extends Migration
             $table->bigInteger('inserted_by');
             $table->date('edited_at');
             $table->bigInteger('edited_by');
-            $table->date('verified_at');
-            $table->bigInteger('verified_by');
+            $table->date('verified_at')->nullable();
+            $table->bigInteger('verified_by')->nullable();
         });
 
         Schema::table('konten_blog', function($table) {

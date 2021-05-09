@@ -20,8 +20,8 @@ class CreateKabupaten extends Migration
             $table->boolean('is_verified');
             $table->date('inserted_at');
             $table->bigInteger('inserted_by');
-            $table->date('edited_at');
-            $table->bigInteger('edited_by');
+            $table->date('edited_at')->nullable();
+            $table->bigInteger('edited_by')->nullable();
         });
 
         Schema::table('kabupaten', function($table) {

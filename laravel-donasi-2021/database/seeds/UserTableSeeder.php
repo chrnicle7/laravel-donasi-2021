@@ -39,15 +39,8 @@ class UserTableSeeder extends Seeder
             'password' => Hash::make('relawan2')
         ]);
 
-        $relawan3User = User::create([
-            'nama' => 'Relawan 3',
-            'email' => 'relawan3@gmail.com',
-            'password' => Hash::make('relawan3')
-        ]);
-
         $adminUser->roles()->attach($adminRole);
         $relawan1User->roles()->attach($relawanRole);
         $relawan2User->roles()->attach($relawanRole);
-        $relawan3User->roles()->attach($relawanRole);
     }
 }

@@ -21,8 +21,8 @@ class CreateProgramBerita extends Migration
             $table->boolean('is_active');
             $table->date('inserted_at');
             $table->bigInteger('inserted_by');
-            $table->date('edited_at');
-            $table->bigInteger('edited_by');
+            $table->date('edited_at')->nullable();
+            $table->bigInteger('edited_by')->nullable();
         });
 
         Schema::table('program_berita', function($table) {
