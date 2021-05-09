@@ -20,10 +20,10 @@ class CreateRelawan extends Migration
             $table->string('nama_belakang');
             $table->text('alamat_ktp');
             $table->string('no_wa');
-            $table->bigInteger('id_prov');
-            $table->bigInteger('id_kab');
-            $table->bigInteger('id_kec');
-            $table->bigInteger('id_kel');
+            $table->bigInteger('id_prov')->nullable();
+            $table->bigInteger('id_kab')->nullable();
+            $table->bigInteger('id_kec')->nullable();
+            $table->bigInteger('id_kel')->nullable();
             $table->bigInteger('id_profesi');
             $table->smallInteger('id_jk');
             $table->bigInteger('id_agama');
