@@ -22,20 +22,28 @@ Route::get('/', function () {
 // Route auth
 Auth::routes();
 
+//
+Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser')->name('verifiy_user');
+
 // Route untuk admin
-Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:admin-users')->group(function() {
+Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:admin-users', 'can:verified-users')->group(function() {
     Route::get('/', 'AdminDashboardController@index')->name('index');
     Route::resource('/users', 'UserController', ['except' => ['show', 'create', 'store']]);
 });
 
 // Route untuk relawan
-Route::namespace('Relawan')->prefix('relawan')->name('relawan.')->middleware('can:relawan-users')->group(function() {
+Route::namespace('Relawan')->prefix('relawan')->name('relawan.')->middleware('can:relawan-users', 'can:verified-users')->group(function() {
     Route::get('/', 'RelawanDashboardController@index')->name('index');
+});
+
+// Route untuk fundraiser
+Route::namespace('Fundraiser')->prefix('fundraiser')->name('fundraiser.')->middleware('can:fundraiser-users', 'can:verified-users')->group(function() {
+    Route::get('/', 'FundraiserDashboardController@index')->name('index');
 });
 
 // Route Logout
 Route::get('/logout', function(){
-    //logout user
+    // logout user
     Auth::logout();
     // redirect to homepage
     return redirect('/');

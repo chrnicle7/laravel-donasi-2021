@@ -3,11 +3,17 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\SignUpEmail;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Role;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -29,7 +35,9 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/login';
+    public function redirectTo(){
+        return $this->redirectTo = '/login';
+    }
 
     /**
      * Create a new controller instance.
@@ -53,6 +61,7 @@ class RegisterController extends Controller
             'nama' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'role' => ['required']
         ]);
     }
 
@@ -64,10 +73,51 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'nama' => $data['nama'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'verification_code' => sha1(time()),
         ]);
+
+        $roleChoosed = Role::where('id', $data['role'])->first();
+        $user->roles()->attach($roleChoosed);
+
+        Mail::to($user->email)->send(new SignUpEmail($user));
+
+        return $user;
+    }
+
+    public function showRegistrationForm()
+    {
+        $rolesForReg = [Role::where('name', 'relawan')->first(), Role::where('name', 'fundraiser')->first()];
+
+        return view('auth.register')->with([
+            'rolesForReg' => $rolesForReg,
+        ]);
+    }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        return $request->wantsJson()
+                    ? new Response('', 201)
+                    : redirect()->route('login')
+                                ->with(session()->flash('alert-success', 'Silahkan cek inbox email Anda untuk memverifikasi akun'));
+    }
+
+    protected function verifyUser($token)
+    {
+        $user = User::where('verification_code', $token)->first();
+
+        if($user != null){
+            $user->is_verified = 1;
+            $user->save();
+
+            redirect()->route('login')->with(session()->flash('alert-success', 'Akun anda sudah terverifikasi. Silahkan login.'));
+        }
     }
 }

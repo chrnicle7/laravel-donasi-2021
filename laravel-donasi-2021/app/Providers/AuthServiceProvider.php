@@ -32,5 +32,13 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('relawan-users', function($user){
             return $user->hasRole('relawan');
         });
+
+        Gate::define('fundraiser-users', function($user){
+            return $user->hasRole('fundraiser');
+        });
+
+        Gate::define('verified-users', function($user){
+            return $user->is_verified;
+        });
     }
 }
