@@ -13,6 +13,14 @@
         <div class="sidebar-menu">
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
+                @can('admin-users')
+                <li class="sidebar-item  {{ Route::is('admin.users.index') ? 'active' : '' }}">
+                    <a href="{{ route('admin.users.index') }}" class='sidebar-link'>
+                        <i class="fa fa-users" aria-hidden="true"></i>
+                        <span>Manajemen User</span>
+                    </a>
+                </li>
+                @endcan
 
                 {{-- Menu login  --}}
                 @if(!Auth::check())

@@ -28,7 +28,7 @@ Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser')->name('
 // Route untuk admin
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:admin-users', 'can:verified-users')->group(function() {
     Route::get('/', 'AdminDashboardController@index')->name('index');
-    Route::resource('/users', 'UserController', ['except' => ['show', 'create', 'store']]);
+    Route::resource('/users', 'UserController');
 });
 
 // Route untuk relawan

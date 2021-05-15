@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Gate;
+use App\User;
+use App\Role;
 
 class UserController extends Controller
 {
@@ -20,7 +22,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        return view('pages.admin.management-user', compact('users'));
     }
 
     /**
@@ -75,7 +78,15 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $userPrevRoleId = $user->roles->pluck('id')->toArray();
+        $userPrevRole = Role::find($userPrevRoleId);
+        $user->roles()->toggle($userPrevRole);
+
+        $userNewRole = Role::find($request['roles']);
+        $user->roles()->attach($userNewRole);
+
+        return redirect()->back()->with(session()->flash('alert-success', 'Data user berhasil diubah'));
     }
 
     /**
@@ -86,6 +97,12 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if($id==1){
+            return redirect()->back()->with(session()->flash('alert-warning', 'Tidak bisa menghapus superuser!'));
+        }
+        $user = User::find($id);
+        $user->delete();
+
+        return redirect()->route('admin.users.index')->with(session()->flash('alert-success', 'User berhasil di hapus'));
     }
 }

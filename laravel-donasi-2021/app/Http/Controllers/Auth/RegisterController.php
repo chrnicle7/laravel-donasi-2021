@@ -117,6 +117,7 @@ class RegisterController extends Controller
 
         if($user != null){
             $user->is_verified = 1;
+            $user->email_verified_at = Carbon::now();
             $user->save();
 
             $newRelawan = new Relawan();
