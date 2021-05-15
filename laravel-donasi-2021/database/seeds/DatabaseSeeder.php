@@ -17,5 +17,8 @@ class DatabaseSeeder extends Seeder
         $this->call(KabupatenTableSeeder::class);
         $this->call(KecamatanTableSeeder::class);
         // $this->call(KelurahanTableSeeder::class);
+        $this->call(RefProfesiTableSeeder::class);
+        $this->call(RefAgamaTableSeeder::class);
+        $this->call(RefVendorSavingTableSeeder::class);
     }
 }
