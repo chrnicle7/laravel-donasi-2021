@@ -59,4 +59,9 @@ class User extends Authenticatable
 
         return false;
     }
+
+    public function relawan()
+    {
+        return $this->hasOne('App\Relawan', 'id_user', 'id');
+    }
 }

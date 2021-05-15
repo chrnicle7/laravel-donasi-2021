@@ -7,6 +7,7 @@ use App\Mail\SignUpEmail;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use App\Role;
+use App\Relawan;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Carbon;
 
 class RegisterController extends Controller
 {
@@ -117,7 +119,17 @@ class RegisterController extends Controller
             $user->is_verified = 1;
             $user->save();
 
-            redirect()->route('login')->with(session()->flash('alert-success', 'Akun anda sudah terverifikasi. Silahkan login.'));
+            $newRelawan = new Relawan();
+            $newRelawan->id_user = $user->id;
+            $newRelawan->nama_depan = $user->nama;
+            $newRelawan->remember_token = $user->verification_code;
+            $newRelawan->email = $user->email;
+            $newRelawan->is_verified = true;
+            $newRelawan->inserted_at = Carbon::now();
+            $newRelawan->inserted_by = $user->id;
+            $newRelawan->save();
+
+            return redirect()->route('login')->with(session()->flash('alert-success', 'Akun anda sudah terverifikasi. Silahkan login.'));
         }
     }
 }
