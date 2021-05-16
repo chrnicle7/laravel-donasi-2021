@@ -34,6 +34,7 @@
                                 <th class="text-center">Id</th>
                                 <th class="text-center">Role</th>
                                 <th class="text-center">Nama</th>
+                                <th class="text-center">Email</th>
                                 <th class="text-center">Status</th>
                                 <th class="text-center">Action</th>
                             </tr>
@@ -46,6 +47,7 @@
                                         {{$role->name}},
                                     @endforeach</td>
                                     <td >{{$user->nama}}</td>
+                                    <td >{{$user->email}}</td>
                                     <td  class="text-center">
                                         @if($user->is_verified)
                                         <span class="badge bg-success">Terverifikasi</span>

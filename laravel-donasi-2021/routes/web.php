@@ -28,6 +28,10 @@ Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser')->name('
 // Route untuk admin
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:admin-users', 'can:verified-users')->group(function() {
     Route::get('/', 'AdminDashboardController@index')->name('index');
+    Route::get('/profesis', 'AdminDashboardController@listProfesi')->name('list_profesi');
+    Route::post('/profesis/store', 'AdminDashboardController@storeProfesi')->name('store_profesi');
+    Route::delete('/profesis/destroy/{id}', 'AdminDashboardController@destroyProfesi')->name('destroy_profesi');
+    Route::patch('/profesis/update-nama/{id}', 'AdminDashboardController@updateNamaProfesi')->name('update_profesi');
     Route::resource('/users', 'UserController');
 });
 

@@ -19,15 +19,15 @@ class CreateKelurahan extends Migration
             $table->bigInteger('id_kecamatan');
             $table->boolean('is_verified');
             $table->date('inserted_at');
-            $table->bigInteger('inserted_by');
+            $table->bigInteger('inserted_by')->nullable();
             $table->date('edited_at')->nullable();
             $table->bigInteger('edited_by')->nullable();
         });
 
         Schema::table('kelurahan', function($table) {
             $table->foreign('id_kecamatan')->references('id')->on('kecamatan')->onDelete('cascade');
-            $table->foreign('inserted_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('edited_by')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('inserted_by')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('edited_by')->references('id')->on('users')->onDelete('set null');
         });
     }
 

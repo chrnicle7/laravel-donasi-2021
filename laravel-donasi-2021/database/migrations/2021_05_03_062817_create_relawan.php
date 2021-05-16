@@ -31,21 +31,21 @@ class CreateRelawan extends Migration
             $table->string('email')->unique();
             $table->boolean('is_verified');
             $table->date('inserted_at');
-            $table->bigInteger('inserted_by');
+            $table->bigInteger('inserted_by')->nullable();
             $table->date('edited_at')->nullable();
             $table->bigInteger('edited_by')->nullable();
         });
 
         Schema::table('relawan', function($table) {
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('id_prov')->references('id')->on('provinsi')->onDelete('cascade');
-            $table->foreign('id_kab')->references('id')->on('kabupaten')->onDelete('cascade');
-            $table->foreign('id_kec')->references('id')->on('kecamatan')->onDelete('cascade');
-            $table->foreign('id_kel')->references('id')->on('kelurahan')->onDelete('cascade');
-            $table->foreign('id_profesi')->references('id')->on('ref_profesi')->onDelete('cascade');
-            $table->foreign('id_agama')->references('id')->on('ref_agama')->onDelete('cascade');
-            $table->foreign('inserted_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('edited_by')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_prov')->references('id')->on('provinsi')->onDelete('set null');
+            $table->foreign('id_kab')->references('id')->on('kabupaten')->onDelete('set null');
+            $table->foreign('id_kec')->references('id')->on('kecamatan')->onDelete('set null');
+            $table->foreign('id_kel')->references('id')->on('kelurahan')->onDelete('set null');
+            $table->foreign('id_profesi')->references('id')->on('ref_profesi')->onDelete('set null');
+            $table->foreign('id_agama')->references('id')->on('ref_agama')->onDelete('set null');
+            $table->foreign('inserted_by')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('edited_by')->references('id')->on('users')->onDelete('set null');
         });
     }
 

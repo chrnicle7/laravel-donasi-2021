@@ -29,9 +29,9 @@ class CreateSaran extends Migration
         });
 
         Schema::table('saran', function($table) {
-            $table->foreign('inserted_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('edited_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('verified_by')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('inserted_by')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('edited_by')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('verified_by')->references('id')->on('users')->onDelete('set null');
         });
     }
 

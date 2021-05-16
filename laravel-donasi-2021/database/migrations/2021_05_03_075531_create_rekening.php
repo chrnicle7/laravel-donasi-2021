@@ -20,15 +20,15 @@ class CreateRekening extends Migration
             $table->string('nomor_rekening');
             $table->boolean('is_active');
             $table->date('inserted_at');
-            $table->bigInteger('inserted_by');
+            $table->bigInteger('inserted_by')->nullable();
             $table->date('edited_at')->nullable();
             $table->bigInteger('edited_by')->nullable();
         });
 
         Schema::table('rekening', function($table) {
             $table->foreign('id_vendor')->references('id')->on('ref_vendor_saving')->onDelete('cascade');
-            $table->foreign('inserted_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('edited_by')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('inserted_by')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('edited_by')->references('id')->on('users')->onDelete('set null');
         });
     }
 

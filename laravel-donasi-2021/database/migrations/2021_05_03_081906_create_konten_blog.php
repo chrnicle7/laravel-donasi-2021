@@ -19,18 +19,18 @@ class CreateKontenBlog extends Migration
             $table->string('judul');
             $table->text('konten');
             $table->date('inserted_at');
-            $table->bigInteger('inserted_by');
+            $table->bigInteger('inserted_by')->nullable();
             $table->date('edited_at');
-            $table->bigInteger('edited_by');
+            $table->bigInteger('edited_by')->nullable();
             $table->date('verified_at')->nullable();
             $table->bigInteger('verified_by')->nullable();
         });
 
         Schema::table('konten_blog', function($table) {
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('inserted_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('edited_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('verified_by')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('inserted_by')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('edited_by')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('verified_by')->references('id')->on('users')->onDelete('set null');
         });
     }
 

@@ -20,6 +20,12 @@
                         <span>Manajemen User</span>
                     </a>
                 </li>
+                <li class="sidebar-item  {{ Route::is('admin.list_profesi') ? 'active' : '' }}">
+                    <a href="{{ route('admin.list_profesi') }}" class='sidebar-link'>
+                        <i class="fa fa-users" aria-hidden="true"></i>
+                        <span>Manajemen Profesi</span>
+                    </a>
+                </li>
                 @endcan
 
                 {{-- Menu login  --}}
@@ -46,35 +52,7 @@
                     </a>
                 </li>
                 @endif
-
-                {{-- Jangan di hapus ini buat nyatet --}}
-                {{-- <li class="sidebar-item  ">
-                    <a href="index.html" class='sidebar-link'>
-                        <i class="bi bi-grid-fill"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li> --}}
-
-                {{-- <li class="sidebar-title">Extra UI</li>
-
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-pentagon-fill"></i>
-                        <span>Widgets</span>
-                    </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="ui-widgets-chatbox.html">Chatbox</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="ui-widgets-pricing.html">Pricing</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="ui-widgets-todolist.html">To-do List</a>
-                        </li>
-                    </ul>
-                </li> --}}
-
+                
             </ul>
         </div>
         <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>

@@ -20,15 +20,15 @@ class CreateProgramBerita extends Migration
             $table->text('konten_berita');
             $table->boolean('is_active');
             $table->date('inserted_at');
-            $table->bigInteger('inserted_by');
+            $table->bigInteger('inserted_by')->nullable();
             $table->date('edited_at')->nullable();
             $table->bigInteger('edited_by')->nullable();
         });
 
         Schema::table('program_berita', function($table) {
             $table->foreign('id_program')->references('id')->on('program')->onDelete('cascade');
-            $table->foreign('inserted_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('edited_by')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('inserted_by')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('edited_by')->references('id')->on('users')->onDelete('set null');
         });
     }
 

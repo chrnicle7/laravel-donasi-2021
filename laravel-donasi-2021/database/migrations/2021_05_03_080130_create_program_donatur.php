@@ -35,10 +35,10 @@ class CreateProgramDonatur extends Migration
 
         Schema::table('program_donatur', function($table) {
             $table->foreign('id_program')->references('id')->on('program')->onDelete('cascade');
-            $table->foreign('id_rekening')->references('id')->on('rekening')->onDelete('cascade');
-            $table->foreign('inserted_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('edited_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('verified_by')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_rekening')->references('id')->on('rekening')->onDelete('set null');
+            $table->foreign('inserted_by')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('edited_by')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('verified_by')->references('id')->on('users')->onDelete('set null');
         });
     }
 

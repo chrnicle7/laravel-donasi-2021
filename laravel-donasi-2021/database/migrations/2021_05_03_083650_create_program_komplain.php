@@ -19,18 +19,18 @@ class CreateProgramKomplain extends Migration
             $table->text('complain');
             $table->text('response');
             $table->date('inserted_at');
-            $table->bigInteger('inserted_by');
+            $table->bigInteger('inserted_by')->nullable();
             $table->date('edited_at');
-            $table->bigInteger('edited_by');
+            $table->bigInteger('edited_by')->nullable();
             $table->date('verified_at')->nullable();
             $table->bigInteger('verified_by')->nullable();
         });
 
         Schema::table('program_komplain', function($table) {
             $table->foreign('id_program')->references('id')->on('program')->onDelete('cascade');
-            $table->foreign('inserted_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('edited_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('verified_by')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('inserted_by')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('edited_by')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('verified_by')->references('id')->on('users')->onDelete('set null');
         });
     }
 
