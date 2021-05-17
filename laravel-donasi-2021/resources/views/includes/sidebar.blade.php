@@ -16,14 +16,25 @@
                 @can('admin-users')
                 <li class="sidebar-item  {{ Route::is('admin.users.index') ? 'active' : '' }}">
                     <a href="{{ route('admin.users.index') }}" class='sidebar-link'>
-                        <i class="fa fa-users" aria-hidden="true"></i>
                         <span>Manajemen User</span>
                     </a>
                 </li>
                 <li class="sidebar-item  {{ Route::is('admin.list_profesi') ? 'active' : '' }}">
                     <a href="{{ route('admin.list_profesi') }}" class='sidebar-link'>
-                        <i class="fa fa-users" aria-hidden="true"></i>
                         <span>Manajemen Profesi</span>
+                    </a>
+                </li>
+                @endcan
+
+                @can('relawan-users')
+                <li class="sidebar-item  {{ Route::is('relawan.programs.index') ? 'active' : '' }}">
+                    <a href="{{ route('relawan.programs.index') }}" class='sidebar-link'>
+                        <span>Daftar Program</span>
+                    </a>
+                </li>
+                <li class="sidebar-item  {{ Route::is('relawan.programs.create') ? 'active' : '' }}">
+                    <a href="{{ route('relawan.programs.create') }}" class='sidebar-link'>
+                        <span>Tambah Program</span>
                     </a>
                 </li>
                 @endcan
@@ -52,7 +63,7 @@
                     </a>
                 </li>
                 @endif
-                
+
             </ul>
         </div>
         <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>

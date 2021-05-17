@@ -30,10 +30,9 @@ class LoginController extends Controller
      */
     public function redirectTo(){
         if(Auth::user()->hasRole('admin')){
-            $this->redirectTo = route('admin.index');
-            return $this->redirectTo;
+            $this->redirectTo = route('admin.users.index');
         }else if(Auth::user()->hasRole('relawan')){
-            $this->redirectTo = route('relawan.index');
+            $this->redirectTo = route('relawan.programs.index');
         }else if(Auth::user()->hasRole('fundraiser')){
             $this->redirectTo = route('fundraiser.index');
         }else{

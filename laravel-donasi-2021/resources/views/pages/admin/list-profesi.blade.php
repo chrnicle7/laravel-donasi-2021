@@ -159,13 +159,13 @@
                                                     <form action="{{route('admin.store_profesi')}}" method="POST">
                                                         @csrf
                                                         <div class="modal-body mx-4">
-                                                            <label for="tambah_nama_profesi_{{$profesi->id}}">Nama Profesi</label>
-                                                            <input type="text" id="tambah_nama_profesi_{{$profesi->id}}" name="tambah_nama_profesi" class="form-control" placeholder="Nama">
+                                                            <label for="tambah_nama_profesi">Nama Profesi</label>
+                                                            <input type="text" id="tambah_nama_profesi" name="tambah_nama_profesi" class="form-control" placeholder="Nama">
                                                             <div class="custom-control custom-checkbox my-3">
                                                                 <input type="checkbox"
-                                                                    class="form-check-input form-check-primary form-check-glow" name="tambah_status_profesi" id="tambah_status_profesi_{{$profesi->id}}">
+                                                                    class="form-check-input form-check-primary form-check-glow" name="tambah_status_profesi" id="tambah_status_profesi">
                                                                 <label class="form-check-label mx-1"
-                                                                    for="tambah_status_profesi_{{$profesi->id}}">Aktif</label>
+                                                                    for="tambah_status_profesi">Aktif</label>
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
@@ -182,7 +182,7 @@
                                                     </form>
                                                 </div>
                                             </div>
-                                        </div>
+                                    </div>
                                 </tr> 
                             @endforeach
                         </tbody>
