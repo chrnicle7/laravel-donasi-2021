@@ -1,11 +1,11 @@
 @extends('layouts.master')
-@section('tableId', '#profesis')
+@section('tableId', '#vendor-savings')
 @section('content')
     <div class="page-heading">
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Manajemen Profesi</h3>
+                    <h3>Manajemen Vendor Saving</h3>
                     <p class="text-subtitle text-muted"></p>
                 </div>
                 @include('includes.greeting')
@@ -26,77 +26,62 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-10">
-                            <h4 class="card-title">Daftar Profesi</h4>
+                            <h4 class="card-title">Daftar Vendor Saving</h4>
                         </div>
                         <div class="col-2">
                             <button type="button" class="btn btn-sm btn-primary float-right" data-bs-toggle="modal"
-                                data-bs-target="#tambah_profesi">
-                                Tambah profesi
+                                data-bs-target="#tambah_vendor_saving">
+                                Tambah Vendor Saving
                             </button>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <table class="table table-striped" id="profesis">
+                    <table class="table table-striped" id="vendor-savings">
                         <thead>
                             <tr>
                                 <th class="text-center">Id</th>
                                 <th class="text-center">Nama</th>
-                                <th class="text-center">Status</th>
                                 <th class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($profesis as $profesi)
+                            @foreach ($vendors as $vendor)
                                 <tr>
-                                    <td class="text-center">{{$profesi->id}}</td>
-                                    <td>{{$profesi->nama}}</td>
-                                    <td class="text-center">
-                                        @if($profesi->is_active)
-                                            <span class="badge bg-success">Aktif</span>
-                                        @else
-                                            <span class="badge bg-danger">Tidak aktif</span>
-                                        @endif
-                                    </td>
+                                    <td class="text-center">{{$vendor->id}}</td>
+                                    <td>{{$vendor->nama}}</td>
                                     <td class="text-center">
                                         {{-- Button Edit --}}
                                         <button type="button" class="btn btn-sm btn-warning "data-bs-toggle="modal"
-                                            data-bs-target="#profesi_edit_{{$profesi->id}}">
+                                            data-bs-target="#vendor_edit_{{$vendor->id}}">
                                             Edit
                                         </button>
 
                                         {{-- Menu Delete --}}
                                         <button type="button" class="btn btn-sm btn-danger "data-bs-toggle="modal"
-                                            data-bs-target="#profesi_destroy_{{$profesi->id}}">
+                                            data-bs-target="#vendor_destroy_{{$vendor->id}}">
                                             Hapus
                                         </button>
                                     </td>
 
                                     {{-- Modal Edit --}}
-                                    <div class="modal fade text-left" id="profesi_edit_{{$profesi->id}}" tabindex="-1" role="dialog"
+                                    <div class="modal fade text-left" id="vendor_edit_{{$vendor->id}}" tabindex="-1" role="dialog"
                                         aria-labelledby="myModalLabel1" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-scrollable" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="$profesi_dest_ttl_{{$profesi->id}}">Edit</h5>
+                                                    <h5 class="modal-title" id="$vendor_dest_ttl_{{$vendor->id}}">Edit</h5>
                                                     <button type="button" class="close rounded-pill"
                                                         data-bs-dismiss="modal" aria-label="Close">
                                                         <i data-feather="x"></i>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="{{route('admin.profesis.update', $profesi->id)}}" method="POST">
+                                                    <form action="{{route('admin.vendors.update', $vendor->id)}}" method="POST">
                                                         @method('PATCH')
                                                         @csrf
-                                                        <label for="nama_profesi_{{$profesi->id}}">Nama Profesi</label>
-                                                        <input type="text" id="nama_profesi_{{$profesi->id}}" name="nama_profesi" class="form-control" value="{{$profesi->nama}}">
-                                                        <div class="custom-control custom-checkbox my-3">
-                                                            <input type="checkbox"
-                                                                class="form-check-input form-check-primary form-check-glow"
-                                                                @if($profesi->is_active) checked @endif name="status" id="profesi_{{$profesi->id}}_status">
-                                                            <label class="form-check-label mx-1"
-                                                                for="profesi_{{$profesi->id}}_status">Aktif</label>
-                                                        </div>
+                                                        <label for="nama_vendor_{{$vendor->id}}">Nama vendor</label>
+                                                        <input type="text" id="nama_vendor_{{$vendor->id}}" name="nama_vendor" class="form-control" value="{{$vendor->nama}}">
                                                 </div>
                                                         <div class="modal-footer">     
                                                             <button type="button" class="btn" data-bs-dismiss="modal">
@@ -114,12 +99,12 @@
                                     </div>
 
                                     {{-- Modal Delete --}}
-                                    <div class="modal fade text-left" id="profesi_destroy_{{$profesi->id}}" tabindex="-1" role="dialog"
+                                    <div class="modal fade text-left" id="vendor_destroy_{{$vendor->id}}" tabindex="-1" role="dialog"
                                         aria-labelledby="myModalLabel1" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-scrollable" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="$profesi_dest_ttl_{{$profesi->id}}">Apakah Anda yakin untuk menghapus profesi {{$profesi->nama}}?</h5>
+                                                    <h5 class="modal-title" id="$vendor_dest_ttl_{{$vendor->id}}">Apakah Anda yakin untuk menghapus vendor {{$vendor->nama}}?</h5>
                                                     <button type="button" class="close rounded-pill"
                                                         data-bs-dismiss="modal" aria-label="Close">
                                                         <i data-feather="x"></i>
@@ -130,7 +115,7 @@
                                                         <i class="bx bx-x d-block d-sm-none"></i>
                                                         <span class="d-none d-sm-block">Tidak</span>
                                                     </button>
-                                                    <form action="{{route('admin.profesis.destroy', $profesi->id)}}" method="POST">
+                                                    <form action="{{route('admin.vendors.destroy', $vendor->id)}}" method="POST">
                                                         @method('DELETE')
                                                         @csrf
                                                         <button type="submit" class="btn btn-danger ml-1">
@@ -144,29 +129,23 @@
                                     </div>
 
                                     {{-- Modal Tambah --}}
-                                    <div class="modal fade text-left" id="tambah_profesi" tabindex="-1"
-                                        role="dialog" aria-labelledby="tambah_profesi" aria-hidden="true">
+                                    <div class="modal fade text-left" id="tambah_vendor_saving" tabindex="-1"
+                                        role="dialog" aria-labelledby="tambah_vendor_saving" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
                                                 role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h4 class="modal-title" id="tambah_profesi_title">Tambah profesi</h4>
+                                                        <h4 class="modal-title" id="tambah_vendor_saving_title">Tambah vendor</h4>
                                                         <button type="button" class="close" data-bs-dismiss="modal"
                                                             aria-label="Close">
                                                             <i data-feather="x"></i>
                                                         </button>
                                                     </div>
-                                                    <form action="{{route('admin.profesis.store')}}" method="POST">
+                                                    <form action="{{route('admin.vendors.store')}}" method="POST">
                                                         @csrf
                                                         <div class="modal-body mx-4">
-                                                            <label for="tambah_nama_profesi">Nama Profesi</label>
-                                                            <input type="text" id="tambah_nama_profesi" name="tambah_nama_profesi" class="form-control" placeholder="Nama">
-                                                            <div class="custom-control custom-checkbox my-3">
-                                                                <input type="checkbox"
-                                                                    class="form-check-input form-check-primary form-check-glow" name="tambah_status_profesi" id="tambah_status_profesi">
-                                                                <label class="form-check-label mx-1"
-                                                                    for="tambah_status_profesi">Aktif</label>
-                                                            </div>
+                                                            <label for="tambah_nama_vendor">Nama vendor</label>
+                                                            <input type="text" id="tambah_nama_vendor" name="tambah_nama_vendor" class="form-control" placeholder="Nama">
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary"

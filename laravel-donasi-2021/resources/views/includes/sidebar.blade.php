@@ -19,9 +19,19 @@
                         <span>Manajemen User</span>
                     </a>
                 </li>
-                <li class="sidebar-item  {{ Route::is('admin.list_profesi') ? 'active' : '' }}">
-                    <a href="{{ route('admin.list_profesi') }}" class='sidebar-link'>
+                <li class="sidebar-item  {{ Route::is('admin.profesis.index') ? 'active' : '' }}">
+                    <a href="{{ route('admin.profesis.index') }}" class='sidebar-link'>
                         <span>Manajemen Profesi</span>
+                    </a>
+                </li>
+                <li class="sidebar-item  {{ Route::is('admin.agamas.index') ? 'active' : '' }}">
+                    <a href="{{ route('admin.agamas.index') }}" class='sidebar-link'>
+                        <span>Manajemen Agama</span>
+                    </a>
+                </li>
+                <li class="sidebar-item  {{ Route::is('admin.vendors.index') ? 'active' : '' }}">
+                    <a href="{{ route('admin.vendors.index') }}" class='sidebar-link'>
+                        <span>Manajemen Vendor Saving</span>
                     </a>
                 </li>
                 @endcan
