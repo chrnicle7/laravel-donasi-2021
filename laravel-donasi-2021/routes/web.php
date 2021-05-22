@@ -31,6 +31,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:admi
     Route::resource('/profesis', 'RefProfesiController');
     Route::resource('/agamas', 'RefAgamaController');
     Route::resource('/vendors', 'RefVendorSavingController');
+    Route::resource('/rekenings', 'RekeningController');
 });
 
 // Route untuk relawan

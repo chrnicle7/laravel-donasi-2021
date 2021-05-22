@@ -102,6 +102,8 @@ class RefAgamaController extends Controller
             }else{
                 $agama->is_active = false;
             }
+            $agama->edited_at = Carbon::now();
+            $agama->edited_by = auth()->user()->id;
             $agama->save();
 
             return redirect()->route('admin.agamas.index')->with(session()->flash('alert-success', 'Data agama berhasil di ubah'));

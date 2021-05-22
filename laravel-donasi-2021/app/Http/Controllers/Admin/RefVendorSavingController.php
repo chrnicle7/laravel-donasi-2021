@@ -89,6 +89,8 @@ class RefVendorSavingController extends Controller
         if(isset($request->nama_vendor) && $request->has('form_edit')){
             $vendor = RefVendorSaving::find($id);
             $vendor->nama = $request->nama_vendor;
+            $vendor->edited_at = Carbon::now();
+            $vendor->edited_by = auth()->user()->id;
             $vendor->save();
 
             return redirect()->route('admin.vendors.index')->with(session()->flash('alert-success', 'Data vendor berhasil di ubah'));

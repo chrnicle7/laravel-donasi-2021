@@ -34,6 +34,11 @@
                         <span>Manajemen Vendor Saving</span>
                     </a>
                 </li>
+                <li class="sidebar-item  {{ Route::is('admin.rekenings.index') ? 'active' : '' }}">
+                    <a href="{{ route('admin.rekenings.index') }}" class='sidebar-link'>
+                        <span>Manajemen Rekening</span>
+                    </a>
+                </li>
                 @endcan
 
                 @can('relawan-users')

@@ -101,6 +101,8 @@ class RefProfesiController extends Controller
             }else{
                 $profesi->is_active = false;
             }
+            $profesi->edited_at = Carbon::now();
+            $profesi->edited_by = auth()->user()->id;
             $profesi->save();
 
             return redirect()->route('admin.profesis.index')->with(session()->flash('alert-success', 'Data profesi berhasil di ubah'));
