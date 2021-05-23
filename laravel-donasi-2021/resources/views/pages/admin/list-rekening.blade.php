@@ -11,7 +11,7 @@
                 @include('includes.greeting')
             </div>
         </div>
-        
+
             @foreach (['danger', 'warning', 'success', 'info'] as $msg)
                 @if(Session::has('alert-' . $msg))
                     <div class="alert alert-{{ $msg }} alert-dismissible fade show">
@@ -29,10 +29,60 @@
                             <h4 class="card-title">Daftar Rekening</h4>
                         </div>
                         <div class="col-2">
+                            {{-- Button Tambah --}}
                             <button type="button" class="btn btn-sm btn-primary float-right" data-bs-toggle="modal"
                                 data-bs-target="#tambah_rekening">
                                 Tambah rekening
                             </button>
+
+                            {{-- Modal Tambah --}}
+                            <div class="modal fade text-left" id="tambah_rekening" tabindex="-1"
+                            role="dialog" aria-labelledby="tambah_rekening" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+                                    role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="tambah_rekening_title">Tambah rekening</h4>
+                                            <button type="button" class="close" data-bs-dismiss="modal"
+                                                aria-label="Close">
+                                                <i data-feather="x"></i>
+                                            </button>
+                                        </div>
+                                        <form action="{{route('admin.rekenings.store')}}" method="POST">
+                                            @csrf
+                                            <div class="modal-body mx-4">
+                                                <label for="tambah_vendor_rekening">Vendor rekening</label>
+                                                <select class="form-select" id="tambah_vendor_rekening" name="tambah_vendor_rekening">
+                                                    @foreach ($vendors as $vendor)
+                                                    <option value="{{$vendor->id}}">{{$vendor->nama}}</option>
+                                                    @endforeach
+                                                </select>
+                                                <label for="tambah_nama_rekening">Nama rekening</label>
+                                                <input type="text" id="tambah_nama_rekening" name="tambah_nama_rekening" class="form-control" placeholder="Nama">
+                                                <label for="tambah_nomor_rekening">Nomor rekening</label>
+                                                <input type="text" id="tambah_nomor_rekening" name="tambah_nomor_rekening" class="form-control" placeholder="Nama">
+                                                <div class="custom-control custom-checkbox my-3">
+                                                    <input type="checkbox"
+                                                        class="form-check-input form-check-primary form-check-glow" name="tambah_status_rekening" id="tambah_status_rekening">
+                                                    <label class="form-check-label mx-1"
+                                                        for="tambah_status_rekening">Aktif</label>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">
+                                                    <i class="bx bx-x d-block d-sm-none"></i>
+                                                    <span class="d-none d-sm-block">Close</span>
+                                                </button>
+                                                <button type="submit" class="btn btn-primary ml-1">
+                                                    <i class="bx bx-check d-block d-sm-none"></i>
+                                                    <span class="d-none d-sm-block">Tambahkan</span>
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -155,54 +205,7 @@
                                         </div>
                                     </div>
 
-                                    {{-- Modal Tambah --}}
-                                    <div class="modal fade text-left" id="tambah_rekening" tabindex="-1"
-                                        role="dialog" aria-labelledby="tambah_rekening" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-                                                role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title" id="tambah_rekening_title">Tambah rekening</h4>
-                                                        <button type="button" class="close" data-bs-dismiss="modal"
-                                                            aria-label="Close">
-                                                            <i data-feather="x"></i>
-                                                        </button>
-                                                    </div>
-                                                    <form action="{{route('admin.rekenings.store')}}" method="POST">
-                                                        @csrf
-                                                        <div class="modal-body mx-4">
-                                                            <label for="tambah_vendor_rekening_{{$rekening->id}}">Vendor rekening</label>
-                                                            <select class="form-select" id="tambah_vendor_rekening_{{$rekening->id}}" name="tambah_vendor_rekening">
-                                                                @foreach ($vendors as $vendor)
-                                                                <option value="{{$vendor->id}}">{{$vendor->nama}}</option>
-                                                                @endforeach
-                                                            </select>
-                                                            <label for="tambah_nama_rekening">Nama rekening</label>
-                                                            <input type="text" id="tambah_nama_rekening" name="tambah_nama_rekening" class="form-control" placeholder="Nama">
-                                                            <label for="tambah_nomor_rekening">Nomor rekening</label>
-                                                            <input type="text" id="tambah_nomor_rekening" name="tambah_nomor_rekening" class="form-control" placeholder="Nama">
-                                                            <div class="custom-control custom-checkbox my-3">
-                                                                <input type="checkbox"
-                                                                    class="form-check-input form-check-primary form-check-glow" name="tambah_status_rekening" id="tambah_status_rekening">
-                                                                <label class="form-check-label mx-1"
-                                                                    for="tambah_status_rekening">Aktif</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-bs-dismiss="modal">
-                                                                <i class="bx bx-x d-block d-sm-none"></i>
-                                                                <span class="d-none d-sm-block">Close</span>
-                                                            </button>
-                                                            <button type="submit" class="btn btn-primary ml-1">
-                                                                <i class="bx bx-check d-block d-sm-none"></i>
-                                                                <span class="d-none d-sm-block">Tambahkan</span>
-                                                            </button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                    </div>
+                                    
                                 </tr> 
                             @endforeach
                         </tbody>

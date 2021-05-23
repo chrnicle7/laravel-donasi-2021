@@ -38,7 +38,12 @@
                         <div class="form-group">
                             <label for="edit_batas_akhir">Batas akhir</label>
                             <input type="text" id="edit_batas_akhir" name="edit_batas_akhir" class="form-control" value="{{$program->batas_akhir}}"></p>
-                        </div>   
+                        </div>  
+                        
+                        <div class="form-group">
+                            <label for="edit_gambar_program">Upload ulang gambar</label>
+                            <input type="file" name="edit_gambar_program" style="display: block">
+                        </div>
 
                         <button type="submit" class="btn btn-primary ml-1 my-4">
                             <i class="bx bx-check d-block d-sm-none"></i>

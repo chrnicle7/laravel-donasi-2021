@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Auth;
 */
 
 // Homepage (non-login)
-Route::get('/', function () {
-    return view('pages.umum.home');
-})->name('homepage');
+Route::get('/', 'HomeController@index')->name('homepage');
+Route::get('/donasi/{id}', 'HomeController@show')->name('detail_donasi');
+Route::post('/donasi/kirim/{id}', 'HomeController@kirimDonasi')->name('kirim_donasi');
 
 // Route auth
 Auth::routes();

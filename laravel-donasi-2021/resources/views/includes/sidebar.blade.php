@@ -13,6 +13,13 @@
         <div class="sidebar-menu">
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
+
+                <li class="sidebar-item  {{ Route::is('homepage') ? 'active' : '' }}">
+                    <a href="{{ route('homepage') }}" class='sidebar-link'>
+                        <span>Home</span>
+                    </a>
+                </li>
+
                 @can('admin-users')
                 <li class="sidebar-item  {{ Route::is('admin.users.index') ? 'active' : '' }}">
                     <a href="{{ route('admin.users.index') }}" class='sidebar-link'>

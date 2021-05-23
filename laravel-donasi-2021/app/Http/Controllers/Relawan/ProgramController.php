@@ -124,6 +124,20 @@ class ProgramController extends Controller
         $program->edited_at = Carbon::now();
         $program->save();
 
+        if($request->file('edit_gambar_program')){
+            $gambarProgram = GambarProgram::find($program->gambarProgram->id);
+            Storage::delete($gambarProgram->path);
+
+            $destinationPath = 'public/images/program';
+            $imageName = auth()->user()->id."_".Carbon::now()->format('dmYH')."_".$request->file('edit_gambar_program')->getClientOriginalName();
+            $programImagePath = $request->file('edit_gambar_program')->storeAs($destinationPath, $imageName);
+            $gambarProgram->ekstensi = $request->file('edit_gambar_program')->extension();
+            $gambarProgram->nama = $imageName;
+            $gambarProgram->ukuran =  $request->file('edit_gambar_program')->getSize();
+            $gambarProgram->path = $programImagePath;
+            $gambarProgram->save();
+        }
+
         return redirect()->route('relawan.programs.index')->with(session()->flash('alert-success', 'Data program berhasil diubah'));
     }
 
@@ -136,14 +150,12 @@ class ProgramController extends Controller
     public function destroy($id)
     {
         $program = Program::find($id);
+        $gambarProgram = GambarProgram::find($program->gambarProgram->id);
+        Storage::delete($gambarProgram->path);
+        $gambarProgram->delete();
         $program->delete();
 
         return redirect()->route('relawan.programs.index')->with(session()->flash('alert-success', 'Data program berhasil dihapus'));
     }
 
-    public function getGambar($id){
-        $program = Program::find($id);
-
-        return $program->gambarProgram->path;
-    }
 }
