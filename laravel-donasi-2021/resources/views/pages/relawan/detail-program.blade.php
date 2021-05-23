@@ -23,12 +23,15 @@
             <div class="card">
                 <div class="card-header">
                     <div class="row">
-                        <div class="col-10">
+                        <div class="col-10 my-0">
                             <h4 class="card-title">{{$program->nama_program}}</h4>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
+                    <div class="d-flex justify-content-center" style="margin-bottom: 20px">
+                        <img height="250px" src="{{ asset('/storage/images/program/'.$program->gambarProgram->nama) }}" alt="">
+                    </div>
                     <table class="table table-striped" id="programs">
                         <tbody>
                             <tr>

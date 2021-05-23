@@ -97,7 +97,7 @@ class RekeningController extends Controller
     public function update(Request $request, $id)
     {
         //
-        if(isset($request->tambah_nama_rekening) && isset($request->tambah_vendor_rekening) && isset($request->tambah_nomor_rekening) && $request->has('form_edit')){
+        if($request->has('form_edit')){
             $rekening = Rekening::find($id);
             $rekening->id_vendor = $request->vendor_rekening;
             $rekening->nama_rekening = $request->nama_rekening;

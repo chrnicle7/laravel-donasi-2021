@@ -33,12 +33,17 @@
     
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <label for="tambah_gambar_program">Upload Gambar</label>
+                            <input type="file" name="tambah_gambar_program" style="display: block">
+                        </div>
     
                         <div class="form-group">
                             <label for="tambah_batas_akhir">Batas akhir</label>
                             <input type="text" id="tambah_batas_akhir" name="tambah_batas_akhir" class="form-control"></p>
-                        </div>   
-
+                        </div> 
+                        
                         <button type="submit" class="btn btn-primary ml-1 my-4">
                             <i class="bx bx-check d-block d-sm-none"></i>
                             <span class="d-none d-sm-block">SUBMIT</span>

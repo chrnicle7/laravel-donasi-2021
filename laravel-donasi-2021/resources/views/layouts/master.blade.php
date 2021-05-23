@@ -24,9 +24,6 @@
     {{-- Asset untuk Jquery UI - Form tanggal --}}
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-    {{-- Asset untuk form select --}}
-    <link rel="stylesheet" href="/assets/vendors/choices.js/choices.min.css" />
-
     {{-- Lain2 --}}
     <link rel="stylesheet" href="/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="/assets/vendors/bootstrap-icons/bootstrap-icons.css">

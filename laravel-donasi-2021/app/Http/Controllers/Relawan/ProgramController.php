@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Program;
 use App\GambarProgram;
 use Illuminate\Support\Carbon;
-
+use Illuminate\Support\Facades\Storage;
 
 class ProgramController extends Controller
 {
@@ -46,6 +46,7 @@ class ProgramController extends Controller
             'tambah_target' => 'required',
             'tambah_info' => 'required',
             'tambah_batas_akhir' => 'required',
+            'tambah_gambar_program' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         $program = new Program();
@@ -57,6 +58,17 @@ class ProgramController extends Controller
         $program->inserted_by = auth()->user()->id;
         $program->inserted_at = Carbon::now();
         $program->save();
+
+        $destinationPath = 'public/images/program';
+        $imageName = auth()->user()->id."_".$request->file('tambah_gambar_program')->getClientOriginalName();
+        $programImagePath = $request->file('tambah_gambar_program')->storeAs($destinationPath, $imageName);
+        $gambarProgram = new GambarProgram();
+        $gambarProgram->id_program = $program->id;
+        $gambarProgram->ekstensi = $request->file('tambah_gambar_program')->extension();
+        $gambarProgram->nama = $imageName;
+        $gambarProgram->ukuran =  $request->file('tambah_gambar_program')->getSize();
+        $gambarProgram->path = $programImagePath;
+        $gambarProgram->save();
 
         return redirect()->route('relawan.programs.index')->with(session()->flash('alert-success', 'Program berhasil ditambahkan'));
     }
@@ -127,5 +139,11 @@ class ProgramController extends Controller
         $program->delete();
 
         return redirect()->route('relawan.programs.index')->with(session()->flash('alert-success', 'Data program berhasil dihapus'));
+    }
+
+    public function getGambar($id){
+        $program = Program::find($id);
+
+        return $program->gambarProgram->path;
     }
 }
