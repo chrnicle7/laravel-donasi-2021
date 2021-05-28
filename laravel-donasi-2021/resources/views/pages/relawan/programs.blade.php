@@ -46,6 +46,7 @@
                                 <td class="text-center">
                                     <a class="btn btn-primary" href="{{route('relawan.programs.show', $program->id)}}" role="button">Detail</a>
                                     <a class="btn btn-warning" href="{{route('relawan.programs.edit', $program->id)}}" role="button">Edit</a>
+                                    <a class="btn btn-secondary" href="{{route('relawan.program-donaturs.show', $program->id)}}" role="button">Manajemen Donatur</a>
                                 </td>
                             </tr>
                             @endforeach

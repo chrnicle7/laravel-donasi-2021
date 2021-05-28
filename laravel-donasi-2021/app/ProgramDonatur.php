@@ -14,4 +14,14 @@ class ProgramDonatur extends Model
 
     // status verifikasi = menunggu verifikasi, ditolak, terverifikasi
     // status donasi = proses penghimpunan, disalurkan
+
+    public function program()
+    {
+        return $this->belongsTo('App\Program', 'id_program', 'id');
+    }
+
+    public function rekening()
+    {
+        return $this->belongsTo('App\Rekening', 'id_rekening', 'id');
+    }
 }

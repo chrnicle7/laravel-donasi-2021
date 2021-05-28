@@ -19,4 +19,9 @@ class Program extends Model
     {
         return $this->hasOne('App\GambarProgram', 'id_program', 'id');
     }
+
+    public function donaturs()
+    {
+        return $this->hasMany('App\ProgramDonatur', 'id_program', 'id');
+    }
 }
