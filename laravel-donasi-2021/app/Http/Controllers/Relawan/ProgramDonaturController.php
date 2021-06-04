@@ -51,8 +51,11 @@ class ProgramDonaturController extends Controller
         //
         $program = Program::find($id);
         $donaturs = ProgramDonatur::where('id_program', $program->id)->orderBy('id', 'ASC')->get();
+        $jmlTerverifikasi = $donaturs->where('status_verifikasi', 'terverifikasi')->count();
+        $jmlDitolak = $donaturs->where('status_verifikasi', 'ditolak')->count();
+        $jmlMenunggu = $donaturs->where('status_verifikasi', 'menunggu verifikasi')->count();
 
-        return view('pages.relawan.program-donaturs', compact('program', 'donaturs'));
+        return view('pages.relawan.program-donaturs', compact('program', 'donaturs', 'jmlTerverifikasi', 'jmlDitolak', 'jmlMenunggu'));
     }
 
     /**
@@ -77,10 +80,15 @@ class ProgramDonaturController extends Controller
     {
         //
         $donatur = ProgramDonatur::find($id);
-
         $donatur->status_verifikasi = $request->change_status_verifikasi;
         $donatur->status_donasi = $request->change_status_donasi;
         $donatur->save();
+
+        if ($donatur->status_verifikasi == "terverifikasi"){
+            $program = Program::where('id', $donatur->id_program)->first();
+            $program->jumlah_terverifikasi += $donatur->nominal_donasi;
+            $program->save();
+        }
 
         return redirect()->route('relawan.program-donaturs.show', $donatur->program->id)->with(session()->flash('alert-success', 'Data donatur berhasil diubah'));
     }

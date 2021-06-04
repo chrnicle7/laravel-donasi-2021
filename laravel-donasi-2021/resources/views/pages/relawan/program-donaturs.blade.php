@@ -21,6 +21,110 @@
         @endforeach
 
         <section class="section">
+            <div class="row d-flex justify-content-center">
+                <div class="col-6 col-lg-2 col-md-6">
+                    <div class="card" style="height: 140px">
+                        <div class="card-body px-3 py-4-5">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="stats-icon" style="background-color: rgb(58, 72, 143)">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <h6 class="text-muted font-semibold">Menunggu Verifikasi</h6>
+                                    <h6 class="font-extrabold mb-0">{{$jmlMenunggu}}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-2 col-md-6">
+                    <div class="card" style="height: 140px" style="height: 140px">
+                        <div class="card-body px-3 py-4-5">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="stats-icon" style="background-color: rgb(235, 47, 47)">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <h6 class="text-muted font-semibold">Ditolak</h6>
+                                    <h6 class="font-extrabold mb-0">{{$jmlDitolak}}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-2 col-md-6">
+                    <div class="card" style="height: 140px" >
+                        <div class="card-body px-3 py-4-5">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="stats-icon" style="background-color: rgb(45, 210, 84)">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <h6 class="text-muted font-semibold">Terverifikasi</h6>
+                                    <h6 class="font-extrabold mb-0">{{$jmlTerverifikasi}}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-2 col-md-6">
+                    <div class="card" style="height: 140px">
+                        <div class="card-body px-3 py-4-5">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="stats-icon" style="background-color: rgb(73, 30, 125)">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <h6 class="text-muted font-semibold">Jumlah Donatur</h6>
+                                    <h6 class="font-extrabold mb-0">{{$donaturs->count()}}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-2 col-md-6">
+                    <div class="card" style="height: 140px">
+                        <div class="card-body px-3 py-4-5">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="stats-icon" style="background-color: rgb(250, 168, 26)">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <h6 class="text-muted font-semibold">Jumlah Terkumpul</h6>
+                                    <h6 class="font-extrabold mb-0">{{$program->jumlah_terkumpul}}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-2 col-md-6">
+                    <div class="card" style="height: 140px">
+                        <div class="card-body px-3 py-4-5">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="stats-icon" style="background-color: rgb(64, 186, 174)">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <h6 class="text-muted font-semibold">Jumlah Terverifikasi</h6>
+                                    <h6 class="font-extrabold mb-0">{{$program->jumlah_terverifikasi}}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="card">
                 <div class="card-header">
                     <div class="row">

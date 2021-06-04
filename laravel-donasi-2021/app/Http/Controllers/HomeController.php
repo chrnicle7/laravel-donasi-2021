@@ -39,8 +39,8 @@ class HomeController extends Controller
 
     public function kirimDonasi(Request $request, $id){
         $program = Program::find($id);
-        
-        if(isset($request->donatur_nominal_donasi) && isset($request->donatur_vendor_rekening) 
+
+        if(isset($request->donatur_nominal_donasi) && isset($request->donatur_vendor_rekening)
             && isset($request->donatur_rekening) && (isset($request->donatur_nama_pengirim))
             && isset($request->donatur_atas_nama) && isset($request->donatur_email)){
                 $rekening = Rekening::where('nomor_rekening', '=', $request->donatur_rekening)->first();
@@ -70,6 +70,9 @@ class HomeController extends Controller
                 $programDonatur->edited_at = Carbon::now();
                 $programDonatur->edited_by = 1;
                 $programDonatur->save();
+
+                $program->jumlah_terkumpul += $programDonatur->nominal_donasi;
+                $program->save();
 
                 return redirect()->route('detail_donasi', $program->id)->with(session()->flash('alert-success', 'Terima kasih, donasi Anda akan segera disalurkan'));
         }else{

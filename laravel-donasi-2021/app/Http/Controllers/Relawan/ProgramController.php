@@ -57,6 +57,8 @@ class ProgramController extends Controller
         $program->batas_akhir = str_replace("/", "-", $validateReq['tambah_batas_akhir']);
         $program->inserted_by = auth()->user()->id;
         $program->inserted_at = Carbon::now();
+        $program->jumlah_terkumpul = 0;
+        $program->jumlah_terverifikasi = 0;
         $program->save();
 
         $destinationPath = 'public/images/program';
