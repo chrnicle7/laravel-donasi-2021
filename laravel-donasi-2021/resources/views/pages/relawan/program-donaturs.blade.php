@@ -27,8 +27,8 @@
                         <div class="card-body px-3 py-4-5">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <div class="stats-icon" style="background-color: rgb(58, 72, 143)">
-
+                                    <div class="stats-icon" style="color:#fff; background-color: rgb(58, 72, 143)">
+                                        <i class="fas fa-hourglass-start"></i>
                                     </div>
                                 </div>
                                 <div class="col-md-8">
@@ -44,8 +44,8 @@
                         <div class="card-body px-3 py-4-5">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <div class="stats-icon" style="background-color: rgb(235, 47, 47)">
-
+                                    <div class="stats-icon" style="color:#fff; background-color: rgb(235, 47, 47)">
+                                        <i class="fas fa-times"></i>
                                     </div>
                                 </div>
                                 <div class="col-md-8">
@@ -61,8 +61,8 @@
                         <div class="card-body px-3 py-4-5">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <div class="stats-icon" style="background-color: rgb(45, 210, 84)">
-
+                                    <div class="stats-icon" style="color:#fff; background-color: rgb(45, 210, 84)">
+                                        <i class="fas fa-check"></i>
                                     </div>
                                 </div>
                                 <div class="col-md-8">
@@ -78,8 +78,8 @@
                         <div class="card-body px-3 py-4-5">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <div class="stats-icon" style="background-color: rgb(73, 30, 125)">
-
+                                    <div class="stats-icon" style="color:#fff; background-color: rgb(73, 30, 125)">
+                                        <i class="fas fa-plus"></i>
                                     </div>
                                 </div>
                                 <div class="col-md-8">
@@ -95,8 +95,8 @@
                         <div class="card-body px-3 py-4-5">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <div class="stats-icon" style="background-color: rgb(250, 168, 26)">
-
+                                    <div class="stats-icon" style="color:#fff; background-color: rgb(250, 168, 26)">
+                                        <i class="fas fa-money-bill-alt"></i>
                                     </div>
                                 </div>
                                 <div class="col-md-8">
@@ -112,8 +112,8 @@
                         <div class="card-body px-3 py-4-5">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <div class="stats-icon" style="background-color: rgb(64, 186, 174)">
-
+                                    <div class="stats-icon" style="color:#fff; background-color: rgb(64, 186, 174)">
+                                        <i class="far fa-money-bill-alt"></i>
                                     </div>
                                 </div>
                                 <div class="col-md-8">

@@ -35,7 +35,10 @@
                             <tr>
                                 <th class="text-center">Id</th>
                                 <th class="text-center">Nama Program</th>
-                                <th class="text-center">Action</th>
+                                <th class="text-center">Detail</th>
+                                <th class="text-center">Edit</th>
+                                <th class="text-center">Managemen Donatur</th>
+                                <th class="text-center">Pendaftaran Fundraiser</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -43,10 +46,25 @@
                             <tr>
                                 <td class="text-center">{{$program->id}}</td>
                                 <td >{{$program->nama_program}}</td>
-                                <td class="text-center">
-                                    <a class="btn btn-primary" href="{{route('relawan.programs.show', $program->id)}}" role="button">Detail</a>
-                                    <a class="btn btn-warning" href="{{route('relawan.programs.edit', $program->id)}}" role="button">Edit</a>
-                                    <a class="btn btn-secondary" href="{{route('relawan.program-donaturs.show', $program->id)}}" role="button">Manajemen Donatur</a>
+                                <td class="text-center" style="width: 10%">
+                                    <a class="btn btn-primary" href="{{route('relawan.programs.show', $program->id)}}" role="button">
+                                        <i class="fas fa-info-circle"></i>
+                                    </a>
+                                </td>
+                                <td class="text-center" style="width: 10%">
+                                    <a class="btn btn-warning" href="{{route('relawan.programs.edit', $program->id)}}" role="button">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                </td>
+                                <td class="text-center" style="width: 10%">
+                                    <a class="btn btn-secondary" href="{{route('relawan.program-donaturs.show', $program->id)}}" role="button">
+                                        <i class="fas fa-donate"></i>
+                                    </a>
+                                </td>
+                                <td class="text-center" style="width: 10%">
+                                    <a class="btn btn-success" href="{{route('relawan.program-fundraisers.show', $program->id)}}" role="button">
+                                        <i class="fas fa-funnel-dollar"></i>
+                                    </a>
                                 </td>
                             </tr>
                             @endforeach

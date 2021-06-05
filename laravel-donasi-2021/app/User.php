@@ -64,4 +64,9 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Relawan', 'id_user', 'id');
     }
+
+    public function programFunds() // untuk relasi fundraiser
+    {
+        return $this->belongsToMany('App\Program', 'program_fundraiser', 'id_user', 'id_program');
+    }
 }

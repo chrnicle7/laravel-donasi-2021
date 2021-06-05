@@ -16,6 +16,7 @@
 
                 <li class="sidebar-item  {{ Route::is('homepage') ? 'active' : '' }}">
                     <a href="{{ route('homepage') }}" class='sidebar-link'>
+                        <i class="fas fa-home"></i>
                         <span>Home</span>
                     </a>
                 </li>
@@ -23,26 +24,31 @@
                 @can('admin-users')
                 <li class="sidebar-item  {{ Route::is('admin.users.index') ? 'active' : '' }}">
                     <a href="{{ route('admin.users.index') }}" class='sidebar-link'>
+                        <i class="fas fa-users-cog"></i>
                         <span>Manajemen User</span>
                     </a>
                 </li>
                 <li class="sidebar-item  {{ Route::is('admin.profesis.index') ? 'active' : '' }}">
                     <a href="{{ route('admin.profesis.index') }}" class='sidebar-link'>
+                        <i class="fas fa-user-md"></i>
                         <span>Manajemen Profesi</span>
                     </a>
                 </li>
                 <li class="sidebar-item  {{ Route::is('admin.agamas.index') ? 'active' : '' }}">
                     <a href="{{ route('admin.agamas.index') }}" class='sidebar-link'>
+                        <i class="fas fa-praying-hands"></i>
                         <span>Manajemen Agama</span>
                     </a>
                 </li>
                 <li class="sidebar-item  {{ Route::is('admin.vendors.index') ? 'active' : '' }}">
                     <a href="{{ route('admin.vendors.index') }}" class='sidebar-link'>
+                        <i class="fas fa-university"></i>
                         <span>Manajemen Vendor Saving</span>
                     </a>
                 </li>
                 <li class="sidebar-item  {{ Route::is('admin.rekenings.index') ? 'active' : '' }}">
                     <a href="{{ route('admin.rekenings.index') }}" class='sidebar-link'>
+                        <i class="fas fa-money-check-alt"></i>
                         <span>Manajemen Rekening</span>
                     </a>
                 </li>
@@ -51,11 +57,13 @@
                 @can('relawan-users')
                 <li class="sidebar-item  {{ Route::is('relawan.programs.index') ? 'active' : '' }}">
                     <a href="{{ route('relawan.programs.index') }}" class='sidebar-link'>
+                        <i class="fas fa-calendar"></i>
                         <span>Daftar Program</span>
                     </a>
                 </li>
                 <li class="sidebar-item  {{ Route::is('relawan.programs.create') ? 'active' : '' }}">
                     <a href="{{ route('relawan.programs.create') }}" class='sidebar-link'>
+                        <i class="fas fa-calendar-plus"></i>
                         <span>Tambah Program</span>
                     </a>
                 </li>

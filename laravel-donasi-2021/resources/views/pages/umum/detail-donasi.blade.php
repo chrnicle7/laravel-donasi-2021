@@ -32,6 +32,16 @@
                                             <th width="40%">Batas akhir</th>
                                             <td>{{$program->batas_akhir}}</td>
                                         </tr>
+                                        <tr>
+                                            <th width="40%">Fundraiser</th>
+                                            <td>
+                                                <ul>
+                                                    @foreach ($program->fundraisers as $fundraiser)
+                                                        <li>{{$fundraiser->email}}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>

@@ -38,6 +38,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:admi
 Route::namespace('Relawan')->prefix('relawan')->name('relawan.')->middleware('can:relawan-users', 'can:verified-users')->group(function() {
     Route::resource('programs', 'ProgramController');
     Route::resource('program-donaturs', 'ProgramDonaturController');
+    Route::resource('program-fundraisers', 'ProgramFundraiserController');
 });
 
 // Route untuk fundraiser

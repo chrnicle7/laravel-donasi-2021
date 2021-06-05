@@ -47,6 +47,16 @@
                                 <th width="40%">Batas akhir</th>
                                 <td>{{$program->batas_akhir}}</td>
                             </tr>
+                            <tr>
+                                <th width="40%">Fundraiser</th>
+                                <td>
+                                    <ul>
+                                        @foreach ($program->fundraisers as $fundraiser)
+                                            <li>{{$fundraiser->email}}</li>
+                                        @endforeach
+                                    </ul>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -65,14 +75,16 @@
                 </div>
             </div>
 
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-center">
                 {{-- Button Delete --}}
                 <button type="button" class="btn btn-sm btn-danger mx-2 float-left" data-bs-toggle="modal"
                     data-bs-target="#program_destroy_{{$program->id}}">
-                    Hapus
+                    <i class="fas fa-trash"></i> Hapus
                 </button>
                 {{-- Button Edit --}}
-                <a class="btn btn-warning float-right mx-2" href="{{route('relawan.programs.edit', $program->id)}}" role="button">Edit</a>
+                <a class="btn btn-warning float-right mx-2" href="{{route('relawan.programs.edit', $program->id)}}" role="button">
+                    <i class="fas fa-edit"></i> Edit
+                </a>
             </div>
 
             {{-- Modal Delete --}}
