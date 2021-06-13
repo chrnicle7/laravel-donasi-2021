@@ -90,37 +90,37 @@
                                     <label for="donatur_nominal_donasi">Nominal donasi</label>
                                     <div class="input-group mb-3" id="donatur_nominal_donasi">
                                         <span class="input-group-text">Rp.</span>
-                                        <input type="number" class="form-control" name="donatur_nominal_donasi">
+                                        <input type="number" class="form-control" name="donatur_nominal_donasi" value="{{old('donatur_nominal_donasi')}}">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="donatur_vendor_rekening">Vendor donasi</label>
                                     <select class="form-select" id="donatur_vendor_rekening" name="donatur_vendor_rekening">
                                         @foreach ($vendors as $vendor)
-                                        <option value="{{$vendor->id}}">{{$vendor->nama}}</option>
+                                        <option value="{{$vendor->id}}" {{ old('donatur_vendor_rekening') == $vendor->id ? "selected" : "" }}>{{$vendor->nama}}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="donatur_rekening">Rekening</label>
-                                    <input type="text" id="donatur_rekening" name="donatur_rekening" class="form-control">
+                                    <input type="text" id="donatur_rekening" name="donatur_rekening" class="form-control" value="{{old('donatur_rekening')}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="donatur_nama_pengirim">Nama pengirim</label>
-                                    <input type="text" id="donatur_nama_pengirim" name="donatur_nama_pengirim" class="form-control">
+                                    <input type="text" id="donatur_nama_pengirim" name="donatur_nama_pengirim" class="form-control" value="{{old('donatur_nama_pengirim')}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="donatur_atas_nama">Atas nama</label>
-                                    <input type="text" id="donatur_atas_nama" name="donatur_atas_nama" class="form-control">
+                                    <input type="text" id="donatur_atas_nama" name="donatur_atas_nama" class="form-control" value="{{old('donatur_atas_nama')}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="donatur_email">Email</label>
-                                    <input type="email" id="donatur_email" name="donatur_email" class="form-control">
+                                    <input type="email" id="donatur_email" name="donatur_email" class="form-control" value="{{old('donatur_email')}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="donatur_pesan" class="form-label">Pesan</label>
                                     <textarea class="form-control" id="donatur_pesan" name="donatur_pesan"
-                                        rows="3"></textarea>
+                                        rows="3">{{old('donatur_pesan')}}</textarea>
                                 </div>
                                 <button type="submit" class="btn btn-primary my-2 mx-1">Donasi sekarang</button>
                             </form>

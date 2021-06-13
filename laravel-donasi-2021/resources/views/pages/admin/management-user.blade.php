@@ -58,12 +58,12 @@
                                     <td class="text-center">
                                         <button type="button" class="btn btn-sm btn-warning "data-bs-toggle="modal"
                                             data-bs-target="#user_edit_{{$user->id}}">
-                                            Edit
+                                            <i class="fas fa-edit"></i>
                                         </button>
                                         {{-- Menu Delete --}}
                                         <button type="button" class="btn btn-sm btn-danger "data-bs-toggle="modal"
                                             data-bs-target="#user_destroy_{{$user->id}}">
-                                            Hapus
+                                            <i class="fas fa-trash"></i>
                                         </button>
                                     </td>
 

@@ -115,13 +115,13 @@
                                         {{-- Button Edit --}}
                                         <button type="button" class="btn btn-sm btn-warning "data-bs-toggle="modal"
                                             data-bs-target="#rekening_edit_{{$rekening->id}}">
-                                            Edit
+                                            <i class="fas fa-edit"></i>
                                         </button>
 
                                         {{-- Menu Delete --}}
                                         <button type="button" class="btn btn-sm btn-danger "data-bs-toggle="modal"
                                             data-bs-target="#rekening_destroy_{{$rekening->id}}">
-                                            Hapus
+                                            <i class="fas fa-trash"></i>
                                         </button>
                                     </td>
 

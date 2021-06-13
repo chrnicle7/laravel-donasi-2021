@@ -53,13 +53,13 @@
                                         {{-- Button Edit --}}
                                         <button type="button" class="btn btn-sm btn-warning "data-bs-toggle="modal"
                                             data-bs-target="#vendor_edit_{{$vendor->id}}">
-                                            Edit
+                                            <i class="fas fa-edit"></i>
                                         </button>
 
                                         {{-- Menu Delete --}}
                                         <button type="button" class="btn btn-sm btn-danger "data-bs-toggle="modal"
                                             data-bs-target="#vendor_destroy_{{$vendor->id}}">
-                                            Hapus
+                                            <i class="fas fa-trash"></i>
                                         </button>
                                     </td>
 
