@@ -52,6 +52,15 @@
                         <span>Manajemen Rekening</span>
                     </a>
                 </li>
+                <li class="sidebar-item  {{ Route::is('admin.konten-blogs.index') ||
+                                            Route::is('admin.konten-blogs.create') ||
+                                            Route::is('admin.konten-blogs.edit') ||
+                                            Route::is('admin.konten-blogs.show') ? 'active' : '' }}">
+                    <a href="{{ route('admin.konten-blogs.index') }}" class='sidebar-link'>
+                        <i class="fas fa-th-large"></i>
+                        <span>Manajemen Konten Blog</span>
+                    </a>
+                </li>
                 @endcan
 
                 @can('relawan-users')
@@ -59,12 +68,6 @@
                     <a href="{{ route('relawan.programs.index') }}" class='sidebar-link'>
                         <i class="fas fa-calendar"></i>
                         <span>Daftar Program</span>
-                    </a>
-                </li>
-                <li class="sidebar-item  {{ Route::is('relawan.programs.create') ? 'active' : '' }}">
-                    <a href="{{ route('relawan.programs.create') }}" class='sidebar-link'>
-                        <i class="fas fa-calendar-plus"></i>
-                        <span>Tambah Program</span>
                     </a>
                 </li>
                 @endcan
