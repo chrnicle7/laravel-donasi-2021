@@ -69,9 +69,10 @@ class ProgramFundraiserController extends Controller
     public function show($idprogram)
     {
         //
+        $programTitle = Program::find($idprogram)->nama_program;
         $progFunds = ProgramFundraiser::where('id_program', $idprogram)->get();
 
-        return view('pages.relawan.program-fundraisers', compact('progFunds', 'idprogram'));
+        return view('pages.relawan.program-fundraisers', compact('progFunds', 'idprogram', 'programTitle'));
     }
 
     /**
@@ -84,7 +85,9 @@ class ProgramFundraiserController extends Controller
     {
         //
         $fundraiserFound = null;
-        return view('pages.relawan.add-program-fundraisers', compact('idprogram', 'fundraiserFound'));
+        $programTitle = Program::find($idprogram)->nama_program;
+
+        return view('pages.relawan.add-program-fundraisers', compact('idprogram', 'fundraiserFound', 'programTitle'));
     }
 
     /**

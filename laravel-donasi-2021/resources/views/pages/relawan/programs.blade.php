@@ -7,7 +7,6 @@
                 <div class="col-12 col-md-6 order-md-1 order-last">
                     <h3>Manajemen Program</h3>
                 </div>
-                @include('includes.greeting')
             </div>
         </div>
 
@@ -26,6 +25,11 @@
                     <div class="row">
                         <div class="col-10">
                             <h4 class="card-title">Daftar Program</h4>
+                        </div>
+                        <div class="col-2">
+                            <a class="btn btn-primary btn-sm" href="{{route('relawan.programs.create')}}" role="button">
+                                <i class="fas fa-plus-circle"></i> Tambahkan program
+                            </a>
                         </div>
                     </div>
                 </div>

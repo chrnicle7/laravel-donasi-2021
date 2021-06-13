@@ -8,7 +8,6 @@
                     <h3>Manajemen Fundraiser</h3>
                     <p class="text-subtitle text-muted"></p>
                 </div>
-                @include('includes.greeting')
             </div>
         </div>
 
@@ -25,7 +24,7 @@
             {{-- Card Menambahkan Fundraiser --}}
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Tambahkan Fundriser</h4>
+                    <h4 class="card-title">Tambahkan Fundriser Program {{$programTitle}}</h4>
                 </div>
                 <div class="card-body">
                     <form action="{{route('relawan.program-fundraisers.update', $idprogram)}}" method="POST">

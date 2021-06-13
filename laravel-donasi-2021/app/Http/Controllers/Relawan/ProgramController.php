@@ -46,7 +46,7 @@ class ProgramController extends Controller
             'tambah_target' => 'required',
             'tambah_info' => 'required',
             'tambah_batas_akhir' => 'required',
-            'tambah_gambar_program' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+            'tambah_gambar_program' => 'image|mimes:jpeg,png,jpg,gif|max:5000'
         ]);
 
         $program = new Program();

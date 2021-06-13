@@ -6,14 +6,13 @@
                 <div class="col-12 col-md-6 order-md-1 order-last">
                     <h3>Edit Program</h3>
                 </div>
-                @include('includes.greeting')
             </div>
         </div>
         <section class="section">
             <div class="card">
                 <div class="card-body">
                     <form action="{{route('relawan.programs.update', $program->id)}}" method="post" id="edit_program" enctype="multipart/form-data">
-                        @method('PATCH')
+                        @method('PUT')
                         @csrf
                         <div class="form-group">
                             <label for="edit_nama_program">Nama Program</label>
@@ -55,3 +54,18 @@
         </section>
     </div>
 @stop
+
+@push('custom-scripts')
+    <script>
+          $( function() {
+            $("#edit_batas_akhir").datepicker({
+                dateFormat:"yy-mm-dd",
+            });
+
+            $("#edit_program").on("submit", function () {
+                var hvalue = $('.ql-editor').html();
+                $(this).append("<textarea name='edit_info' style='display:none'>"+hvalue+"</textarea>");
+            });
+        } );
+    </script>
+@endpush

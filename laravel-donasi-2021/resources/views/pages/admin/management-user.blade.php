@@ -8,10 +8,9 @@
                     <h3>Manajemen User</h3>
                     <p class="text-subtitle text-muted"></p>
                 </div>
-                @include('includes.greeting')
             </div>
         </div>
-        
+
             @foreach (['danger', 'warning', 'success', 'info'] as $msg)
                 @if(Session::has('alert-' . $msg))
                     <div class="alert alert-{{ $msg }} alert-dismissible fade show">
@@ -131,7 +130,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     {{-- Modal Delete --}}
                                     <div class="modal fade text-left" id="user_destroy_{{$user->id}}" tabindex="-1" role="dialog"
                                         aria-labelledby="myModalLabel1" aria-hidden="true">

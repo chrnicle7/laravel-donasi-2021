@@ -7,7 +7,6 @@
                     <h3>Dashboard Fundraiser</h3>
                     <p class="text-subtitle text-muted">The default layout </p>
                 </div>
-                @include('includes.greeting')
             </div>
         </div>
         <section class="section">

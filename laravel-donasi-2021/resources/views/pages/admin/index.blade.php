@@ -8,7 +8,6 @@
                     <h3>Dashboard Admin</h3>
                     <p class="text-subtitle text-muted"></p>
                 </div>
-                @include('includes.greeting')
             </div>
         </div>
         <section class="section">
@@ -29,7 +28,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
+
                         </tbody>
                     </table>
                 </div>

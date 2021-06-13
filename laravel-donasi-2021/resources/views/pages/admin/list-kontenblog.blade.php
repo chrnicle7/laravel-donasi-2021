@@ -8,7 +8,6 @@
                     <h3>Manajemen Konten Blog</h3>
                     <p class="text-subtitle text-muted"></p>
                 </div>
-                @include('includes.greeting')
             </div>
         </div>
     </div>

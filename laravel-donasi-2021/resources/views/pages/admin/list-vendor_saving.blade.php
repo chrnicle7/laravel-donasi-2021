@@ -8,10 +8,9 @@
                     <h3>Manajemen Vendor Saving</h3>
                     <p class="text-subtitle text-muted"></p>
                 </div>
-                @include('includes.greeting')
             </div>
         </div>
-        
+
             @foreach (['danger', 'warning', 'success', 'info'] as $msg)
                 @if(Session::has('alert-' . $msg))
                     <div class="alert alert-{{ $msg }} alert-dismissible fade show">
@@ -83,7 +82,7 @@
                                                         <label for="nama_vendor_{{$vendor->id}}">Nama vendor</label>
                                                         <input type="text" id="nama_vendor_{{$vendor->id}}" name="nama_vendor" class="form-control" value="{{$vendor->nama}}">
                                                 </div>
-                                                        <div class="modal-footer">     
+                                                        <div class="modal-footer">
                                                             <button type="button" class="btn" data-bs-dismiss="modal">
                                                                 <i class="bx bx-x d-block d-sm-none"></i>
                                                                 <span class="d-none d-sm-block">Batalkan</span>
@@ -162,7 +161,7 @@
                                                 </div>
                                             </div>
                                     </div>
-                                </tr> 
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>

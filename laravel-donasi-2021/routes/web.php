@@ -25,6 +25,11 @@ Auth::routes();
 //Rote verifikasi email
 Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser')->name('verifiy_user');
 
+// Route kirim saran
+Route::get('/reload-captcha', 'SaranController@reloadCaptcha');
+Route::get('/saran', 'SaranController@create')->name('create_saran_umum');
+Route::post('/saran-post', 'SaranController@store')->name('store_saran_umum');
+
 // Route untuk admin
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:admin-users', 'can:verified-users')->group(function() {
     Route::resource('/users', 'UserController');
@@ -33,6 +38,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:admi
     Route::resource('/vendors', 'RefVendorSavingController');
     Route::resource('/rekenings', 'RekeningController');
     Route::resource('/konten-blogs', 'KontenBlogController');
+    Route::resource('/saran', 'SaranController');
 });
 
 // Route untuk relawan

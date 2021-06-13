@@ -6,45 +6,50 @@
                 <div class="col-12 col-md-6 order-md-1 order-last">
                     <h3>Donasi {{$program->nama_program}}</h3>
                 </div>
-                @include('includes.greeting')
             </div>
         </div>
         <section class="section my-4">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-content">
-                            <img src="{{ asset('/storage/images/program/'.$program->gambarProgram->nama) }}" class="card-img-top"
-                                height="500px">
-                            <div class="card-body">
-                                <h5 class="card-title" style="margin-bottom: 50px">Detail program</h5>
-                                <table class="table table-striped" id="programs">
-                                    <tbody>
-                                        <tr>
-                                            <th width="40%">Relawan</th>
-                                            <td>{{$program->userProgram->nama}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th width="40%">Target</th>
-                                            <td>Rp. {{$program->target}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th width="40%">Batas akhir</th>
-                                            <td>{{$program->batas_akhir}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th width="40%">Fundraiser</th>
-                                            <td>
-                                                <ul>
-                                                    @foreach ($program->fundraisers as $fundraiser)
-                                                        <li>{{$fundraiser->email}}</li>
-                                                    @endforeach
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-10 my-0">
+                                    <h4 class="card-title"></h4>
+                                </div>
                             </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-center" style="margin-bottom: 20px;">
+                                <img height="250px" src="{{ asset('/storage/images/program/'.$program->gambarProgram->nama) }}"
+                                style="border-radius: 10px" alt="">
+                            </div>
+                            <table class="table table-striped" id="programs">
+                                <tbody>
+                                    <tr>
+                                        <th width="40%">Relawan</th>
+                                        <td>{{$program->userProgram->nama}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th width="40%">Target</th>
+                                        <td>Rp. {{$program->target}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th width="40%">Batas akhir</th>
+                                        <td>{{$program->batas_akhir}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th width="40%">Fundraiser</th>
+                                        <td>
+                                            <ul>
+                                                @foreach ($program->fundraisers as $fundraiser)
+                                                    <li>{{$fundraiser->email}}</li>
+                                                @endforeach
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
 

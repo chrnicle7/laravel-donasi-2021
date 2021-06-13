@@ -7,7 +7,6 @@
                 <div class="col-12 col-md-6 order-md-1 order-last">
                     <h3>Manajemen Donatur Program</h3>
                 </div>
-                @include('includes.greeting')
             </div>
         </div>
 
@@ -129,7 +128,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-10">
-                            <h4 class="card-title">Daftar Donatur</h4>
+                            <h4 class="card-title">Daftar Donatur Program {{$program->nama_program}}</h4>
                         </div>
                     </div>
                 </div>
@@ -176,9 +175,9 @@
                                     @endif
                                 </td>
                                 <td class="text-center">
-                                    <button type="button" class="btn btn-warning block" data-bs-toggle="modal"
+                                    <button type="button" class="btn btn-warning block btn-sm" data-bs-toggle="modal"
                                         data-bs-target="#edit-donatur-{{$donatur->id}}">
-                                        Edit data
+                                        <i class="fas fa-edit"></i>
                                     </button>
                                 </td>
                             </tr>

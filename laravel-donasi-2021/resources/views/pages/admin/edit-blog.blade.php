@@ -6,7 +6,6 @@
                 <div class="col-12 col-md-6 order-md-1 order-last">
                     <h3>Edit Konten</h3>
                 </div>
-                @include('includes.greeting')
             </div>
         </div>
         <section class="section">
@@ -19,6 +18,8 @@
                             <label for="edit_judul_blog">Judul Blog</label>
                             <input type="text" id="edit_judul_blog" name="edit_judul_blog" class="form-control" value={{$blog->judul}}>
                         </div>
+
+                        <input type="hidden" name="edit_id_user" value="{{auth()->user()->id}}">
 
                        <div class="form-group">
                             <label for="full">Isi Blog</label>

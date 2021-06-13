@@ -8,7 +8,6 @@
                     <h3>Manajemen Fundraiser</h3>
                     <p class="text-subtitle text-muted"></p>
                 </div>
-                @include('includes.greeting')
             </div>
         </div>
 
@@ -27,7 +26,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-10">
-                            <h4 class="card-title">Daftar Fundraiser</h4>
+                            <h4 class="card-title">Daftar Fundraiser Program {{$programTitle}}</h4>
                         </div>
                         <div class="col-2">
                             <a href="{{route('relawan.program-fundraisers.edit', $idprogram)}}" type="button" class="btn btn-sm btn-primary float-right">
@@ -68,41 +67,41 @@
 
                                         <!--Danger theme Modal -->
                                         <div class="modal fade text-left" id="del-fund-{{$progFund->fundraiser->id}}" tabindex="-1"
-                                        role="dialog" aria-labelledby="label1del-fund-{{$progFund->fundraiser->id}}"
-                                        aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-                                            role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header bg-danger">
-                                                    <h5 class="modal-title white" id="labeldel-fund-{{$progFund->fundraiser->id}}">
-                                                        Hapus fundraiser
-                                                    </h5>
-                                                    <button type="button" class="close"
-                                                        data-bs-dismiss="modal" aria-label="Close">
-                                                        <i data-feather="x"></i>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Apakah anda yakin untuk menghapus {{$progFund->fundraiser->nama}} dari daftar fundraiser?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button"
-                                                        class="btn btn-light-secondary"
-                                                        data-bs-dismiss="modal">
-                                                        <i class="bx bx-x d-block d-sm-none"></i>
-                                                        <span class="d-none d-sm-block">Tidak</span>
-                                                    </button>
-                                                    <form action="{{route('relawan.program-fundraisers.destroy', $progFund->id)}}" method="POST">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button type="submit" class="btn btn-danger ml-1">
-                                                            <span class="d-none d-sm-block">Ya</span>
+                                            role="dialog" aria-labelledby="label1del-fund-{{$progFund->fundraiser->id}}"
+                                            aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+                                                role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header bg-danger">
+                                                        <h5 class="modal-title white" id="labeldel-fund-{{$progFund->fundraiser->id}}">
+                                                            Hapus fundraiser
+                                                        </h5>
+                                                        <button type="button" class="close"
+                                                            data-bs-dismiss="modal" aria-label="Close">
+                                                            <i data-feather="x"></i>
                                                         </button>
-                                                    </form>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Apakah anda yakin untuk menghapus {{$progFund->fundraiser->nama}} dari daftar fundraiser?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button"
+                                                            class="btn btn-light-secondary"
+                                                            data-bs-dismiss="modal">
+                                                            <i class="bx bx-x d-block d-sm-none"></i>
+                                                            <span class="d-none d-sm-block">Tidak</span>
+                                                        </button>
+                                                        <form action="{{route('relawan.program-fundraisers.destroy', $progFund->id)}}" method="POST">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button type="submit" class="btn btn-danger ml-1">
+                                                                <span class="d-none d-sm-block">Ya</span>
+                                                            </button>
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                     </td>
                                 </tr>
                             @endforeach

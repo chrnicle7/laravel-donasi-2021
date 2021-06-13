@@ -6,7 +6,6 @@
                 <div class="col-12 col-md-6 order-md-1 order-last">
                     <h3>Detail Program {{$program->nama_program}}</h3>
                 </div>
-                @include('includes.greeting')
             </div>
         </div>
 
