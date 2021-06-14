@@ -35,9 +35,14 @@ class HomeController extends Controller
     public function show($id)
     {
         $program = Program::find($id);
+        $beritas = $program->beritas->sortByDesc("inserted_at")->take(3);
+
+        $persTerkumpul = ceil(($program->jumlah_terkumpul/$program->target ) * 100);
+        $persVerif = ceil(($program->jumlah_terverifikasi/$program->target ) * 100);
+
         $vendors = RefVendorSaving::all();
 
-        return view('pages.umum.detail-donasi', compact('program', 'vendors'));
+        return view('pages.umum.detail-donasi', compact('program', 'vendors', 'persTerkumpul', 'persVerif', 'beritas'));
     }
 
     public function kirimDonasi(Request $request, $id){
@@ -89,5 +94,12 @@ class HomeController extends Controller
         $program->save();
 
         return redirect()->route('detail_donasi', $program->id)->with(session()->flash('alert-success', 'Terima kasih, donasi Anda akan segera disalurkan'));
+    }
+
+    public function detailBerita($id, $berita){
+        $program = Program::find($id);
+        $berita = $program->beritas->where('id', $berita)->first();
+
+        return view('pages.umum.detail-berita', compact('berita'));
     }
 }

@@ -106,7 +106,8 @@ class ProgramFundraiserController extends Controller
             })->where('email', $request->search_email_fund)->first();
 
             if($fundraiserFound){
-                return view('pages.relawan.add-program-fundraisers', compact('idprogram', 'fundraiserFound'));
+                $programTitle = Program::find($idprogram)->nama_program;
+                return view('pages.relawan.add-program-fundraisers', compact('idprogram', 'fundraiserFound', 'programTitle'));
             }else{
                 return redirect()->back()->with(session()->flash('alert-danger', 'Fundraiser tidak ditemukan'));
             }

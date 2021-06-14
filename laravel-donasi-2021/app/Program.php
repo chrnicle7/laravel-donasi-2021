@@ -29,4 +29,9 @@ class Program extends Model
     {
         return $this->belongsToMany('App\User', 'program_fundraiser', 'id_program', 'id_user');
     }
+
+    public function beritas()
+    {
+        return $this->hasMany('App\ProgramBerita', 'id_program', 'id');
+    }
 }

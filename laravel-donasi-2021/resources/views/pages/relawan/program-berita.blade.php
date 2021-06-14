@@ -1,11 +1,11 @@
 @extends('layouts.master')
-@section('tableId', '#programs')
+@section('tableId', '#beritas')
 @section('content')
     <div class="page-heading">
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Manajemen Program</h3>
+                    <h3>Manajemen Berita</h3>
                 </div>
             </div>
         </div>
@@ -24,34 +24,44 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-10">
-                            <h4 class="card-title">Daftar Program</h4>
+                            <h4 class="card-title">Daftar Berita Program {{$program->nama_program}}</h4>
                         </div>
                         <div class="col-2">
-                            <a class="btn btn-primary btn-sm" href="{{route('relawan.programs.create')}}" role="button">
-                                <i class="fas fa-plus-circle"></i> Tambahkan program
+                            <a class="btn btn-primary btn-sm" href="{{route('relawan.program-beritas.create', $program->id)}}" role="button">
+                                <i class="fas fa-plus-circle"></i> Tambahkan berita
                             </a>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <table class="table table-striped" id="programs">
+                    <table class="table table-striped" id="beritas">
                         <thead>
                             <tr>
                                 <th class="text-center">Id</th>
-                                <th class="text-center">Nama Program</th>
+                                <th class="text-center">Judul</th>
+                                <th class="text-center">Dibuat pada</th>
+                                <th class="text-center">Status</th>
                                 <th class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($programs as $program)
+                            @foreach ($beritas as $berita)
                             <tr>
-                                <td class="text-center">{{$program->id}}</td>
-                                <td >{{$program->nama_program}}</td>
+                                <td class="text-center">{{$berita->id}}</td>
+                                <td>{{$berita->judul}}</td>
+                                <td class="text-center">{{$berita->inserted_at}}</td>
                                 <td class="text-center">
-                                    <a class="btn btn-primary" href="{{route('relawan.programs.show', $program->id)}}" role="button">
+                                    @if($berita->is_active)
+                                        <span class="badge bg-success">Aktif</span>
+                                    @else
+                                        <span class="badge bg-danger">Tidak aktif</span>
+                                    @endif
+                                </td>
+                                <td class="text-center">
+                                    <a class="btn btn-primary" href="{{route('relawan.program-beritas.show', $berita->id)}}" role="button">
                                         <i class="fas fa-info-circle"></i>
                                     </a>
-                                    <a class="btn btn-warning" href="{{route('relawan.programs.edit', $program->id)}}" role="button">
+                                    <a class="btn btn-warning" href="{{route('relawan.program-beritas.edit', $berita->id)}}" role="button">
                                         <i class="fas fa-edit"></i>
                                     </a>
                                 </td>

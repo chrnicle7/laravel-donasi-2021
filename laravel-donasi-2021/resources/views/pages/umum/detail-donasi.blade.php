@@ -3,7 +3,7 @@
     <div class="page-heading">
         <div class="page-title">
             <div class="row">
-                <div class="col-12 col-md-6 order-md-1 order-last">
+                <div class="col-12 order-md-1 order-last">
                     <h3>Donasi {{$program->nama_program}}</h3>
                 </div>
             </div>
@@ -55,10 +55,59 @@
 
                     <div class="card">
                         <div class="card-header">
+                            <div class="row">
+                                <div class="col-10 my-0">
+                                    <h4 class="card-title">Progress pengumpulan dana</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body" style="text-align: right">
+                            <h6 style="margin-bottom: 30px">Jumlah terkumpul</h6>
+                            <div class="progress progress-primary  mb-4">
+                                <div class="progress-bar progress-label" role="progressbar" style="width: {{$persTerkumpul}}%"
+                                    aria-valuenow="{{$persTerkumpul}}" aria-valuemin="0" aria-valuemax="100" id="jmlKumpul"></div>
+                            </div>
+
+                            <h6 style="margin-bottom: 30px">Jumlah terverifikasi</h6>
+                            <div class="progress progress-success  mb-4">
+                                <div class="progress-bar progress-label" role="progressbar" style="width: {{$persVerif}}%"
+                                    aria-valuenow="{{$persVerif}}" aria-valuemin="0" aria-valuemax="100" id="jmlVerif"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
                             <h4 class="card-title">Info Program</h4>
                         </div>
                         <div class="card-body">
                             {!!$program->info!!}
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-md-9 my-0">
+                                    <h4 class="card-title">Berita terkini</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="list-group">
+                                    @foreach ($beritas as $berita)
+                                            <a href="{{ route('detail_berita', ['id' => $program->id, 'berita' => $berita->id]) }}" class="list-group-item list-group-item-action">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h5 class="mb-1">{{ $berita->judul }}</h5>
+                                                    <small>{{ $berita->inserted_at }}</small>
+                                                </div>
+                                                <hr>
+                                                <p>Ditulis oleh: {{$berita->program->userProgram->nama}}</p>
+                                            </a>
+                                    @endforeach
+                                </div>
+                            </div>
                         </div>
                     </div>
 

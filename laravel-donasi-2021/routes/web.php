@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', 'HomeController@index')->name('homepage');
 Route::get('/donasi/{id}', 'HomeController@show')->name('detail_donasi');
 Route::post('/donasi/kirim/{id}', 'HomeController@kirimDonasi')->name('kirim_donasi');
+Route::get('/donasi/{id}/berita/{berita}', 'HomeController@detailBerita')->name('detail_berita');
 
 // Route auth
 Auth::routes();
@@ -43,9 +44,12 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:admi
 
 // Route untuk relawan
 Route::namespace('Relawan')->prefix('relawan')->name('relawan.')->middleware('can:relawan-users', 'can:verified-users')->group(function() {
-    Route::resource('programs', 'ProgramController');
-    Route::resource('program-donaturs', 'ProgramDonaturController');
-    Route::resource('program-fundraisers', 'ProgramFundraiserController');
+    Route::resource('/programs', 'ProgramController');
+    Route::resource('/program-donaturs', 'ProgramDonaturController');
+    Route::resource('/program-fundraisers', 'ProgramFundraiserController');
+    Route::get('/program/{id}/program-beritas', ['as' => 'program-beritas.index', 'uses' => 'ProgramBeritaController@index']);
+    Route::get('/program/{id}/program-beritas/create', ['as' => 'program-beritas.create', 'uses' => 'ProgramBeritaController@create']);
+    Route::resource('/program-beritas', 'ProgramBeritaController', ['except' => ['index', 'create']]);
 });
 
 // Route untuk fundraiser

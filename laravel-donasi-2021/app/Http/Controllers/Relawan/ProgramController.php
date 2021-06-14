@@ -84,8 +84,17 @@ class ProgramController extends Controller
     public function show($id)
     {
         $program = Program::find($id);
+        $persTerkumpul = ceil(($program->jumlah_terkumpul/$program->target ) * 100);
+        $persVerif = ceil(($program->jumlah_terverifikasi/$program->target ) * 100);
 
-        return view('pages.relawan.detail-program', compact('program'));
+        $donaturs = $program->donaturs;
+        $jmlTerverifikasi = $donaturs->where('status_verifikasi', 'terverifikasi')->count();
+        $jmlDitolak = $donaturs->where('status_verifikasi', 'ditolak')->count();
+        $jmlMenunggu = $donaturs->where('status_verifikasi', 'menunggu verifikasi')->count();
+
+        $beritas = $program->beritas->sortByDesc("inserted_at")->take(3);
+
+        return view('pages.relawan.detail-program', compact('program', 'jmlTerverifikasi', 'jmlDitolak', 'jmlMenunggu', 'persTerkumpul', 'persVerif', 'beritas'));
     }
 
     /**
