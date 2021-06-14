@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\KontenBlog;
 use Illuminate\Http\Request;
 use App\Program;
 use App\ProgramDonatur;
@@ -25,9 +26,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $programs = Program::orderBy('batas_akhir', 'ASC')->get();
+        $programs = Program::orderBy('batas_akhir', 'ASC')->take(10)->get();
+        $blogs = KontenBlog::orderBy('inserted_at', 'DESC')->take(10)->get();
 
-        return view('pages.umum.home', compact('programs'));
+        return view('pages.umum.home', compact('programs', 'blogs'));
     }
 
     public function show($id)

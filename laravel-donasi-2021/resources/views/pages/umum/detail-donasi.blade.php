@@ -55,11 +55,7 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <div class="row">
-                                <div class="col-10 my-0">
-                                    <h4 class="card-title">Info Program</h4>
-                                </div>
-                            </div>
+                            <h4 class="card-title">Info Program</h4>
                         </div>
                         <div class="card-body">
                             {!!$program->info!!}
