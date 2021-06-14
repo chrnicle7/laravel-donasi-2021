@@ -48,20 +48,31 @@
                     <div class="tab-pane fade show" id="blog" role="tabpanel"
                         aria-labelledby="blog-tab">
                         <p class="my-3"></p>
-                        @foreach ($blogs as $blog)
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">{{ $blog->judul }}</h4>
-                                </div>
-                                <div class="card-body">
-                                    <p>
-                                        Author: {{ $blog->author->nama }} - Ditulis pada: {{ $blog->inserted_at }}
-                                    </p>
-                                    <hr>
-                                    {!! $blog->konten !!}
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-md-9 my-0">
+                                        <h4 class="card-title">Blog terkini</h4>
+                                    </div>
                                 </div>
                             </div>
-                        @endforeach
+                            <div class="card-content">
+                                <div class="card-body">
+                                    @foreach ($blogs as $blog)
+                                        <div class="list-group my-2">
+                                            <a href="{{ route('detail_blog', $blog->id) }}" class="list-group-item list-group-item-action">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h5 class="mb-1">{{ $blog->judul }}</h5>
+                                                    <small>{{ $blog->inserted_at }}</small>
+                                                </div>
+                                                <hr>
+                                                <p>Ditulis oleh: {{$blog->author->nama}}</p>
+                                            </a>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

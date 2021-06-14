@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\KontenBlog;
 use Illuminate\Http\Request;
 use App\Program;
+use App\ProgramBerita;
 use App\ProgramDonatur;
 use App\RefVendorSaving;
 use App\Rekening;
@@ -96,10 +97,23 @@ class HomeController extends Controller
         return redirect()->route('detail_donasi', $program->id)->with(session()->flash('alert-success', 'Terima kasih, donasi Anda akan segera disalurkan'));
     }
 
+    public function daftarBerita($id){
+        $program = Program::find($id);
+        $beritas = ProgramBerita::where('id_program', $id)->paginate(10);
+
+        return view('pages.umum.program-beritas', compact('program', 'beritas'));
+    }
+
     public function detailBerita($id, $berita){
         $program = Program::find($id);
         $berita = $program->beritas->where('id', $berita)->first();
 
         return view('pages.umum.detail-berita', compact('berita'));
+    }
+
+    public function detailBlog($id){
+        $blog = KontenBlog::find($id);
+
+        return view('pages.umum.detail-blog', compact('blog'));
     }
 }

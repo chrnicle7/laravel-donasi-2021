@@ -88,8 +88,13 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="row">
-                                <div class="col-md-9 my-0">
+                                <div class="col-md-10 my-0">
                                     <h4 class="card-title">Berita terkini</h4>
+                                </div>
+                                <div class="col-md-2" style="text-align: right">
+                                    <a href="{{route('daftar_berita', $program->id)}}" type="button" class="btn btn-sm btn-primary float-right">
+                                        Daftar Berita
+                                    </a>
                                 </div>
                             </div>
                         </div>

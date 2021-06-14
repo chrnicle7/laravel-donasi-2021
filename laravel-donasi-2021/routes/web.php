@@ -18,7 +18,10 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', 'HomeController@index')->name('homepage');
 Route::get('/donasi/{id}', 'HomeController@show')->name('detail_donasi');
 Route::post('/donasi/kirim/{id}', 'HomeController@kirimDonasi')->name('kirim_donasi');
+Route::get('/donasi/{id}/berita', 'HomeController@daftarBerita')->name('daftar_berita');
 Route::get('/donasi/{id}/berita/{berita}', 'HomeController@detailBerita')->name('detail_berita');
+
+Route::get('/blog/{id}', 'HomeController@detailBlog')->name('detail_blog');
 
 // Route auth
 Auth::routes();
