@@ -24,26 +24,29 @@
                     <div class="tab-pane fade show active" id="donasi" role="tabpanel"
                         aria-labelledby="donasi-tab">
                         <p class="my-3"></p>
-                        @foreach ($programs as $program)
-                            <div class="col-md-4 col-12" style="height: 300px">
-                                <div class="card">
-                                    <div class="card-content">
-                                        <img src="{{ asset('/storage/images/program/'.$program->gambarProgram->nama) }}" class="card-img-top img-fluid"
-                                            alt="singleminded" style="height: 250px">
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{ $program->nama_program }}</h5>
-                                            <p class="card-text">
-                                                <p>Target donasi: Rp.{{$program->target}}</p>
-                                                <p>Batas donasi: {{$program->batas_akhir}}</p>
-                                            </p>
+                        <div class="row">
+                                @foreach ($programs as $program)
+                                    <div class="col-md-4 col-12" style="height: 300px">
+                                        <div class="card">
+                                            <div class="card-content">
+                                                <img src="{{ asset('/storage/images/program/'.$program->gambarProgram->nama) }}" class="card-img-top img-fluid"
+                                                    alt="singleminded" style="height: 250px">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">{{ $program->nama_program }}</h5>
+                                                    <p class="card-text">
+                                                        <p>Target donasi: Rp.{{$program->target}}</p>
+                                                        <p>Batas donasi: {{$program->batas_akhir}}</p>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="card-footer">
+                                                <a class="btn btn-primary" href="{{ route('detail_donasi', $program->id) }}" role="button">Donasi Sekarang!</a>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="card-footer">
-                                        <a class="btn btn-primary" href="{{ route('detail_donasi', $program->id) }}" role="button">Donasi Sekarang!</a>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
+                                @endforeach
+                        </div>
+
                     </div>
                     <div class="tab-pane fade show" id="blog" role="tabpanel"
                         aria-labelledby="blog-tab">
