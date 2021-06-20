@@ -26,7 +26,7 @@
                         <p class="my-3"></p>
                         <div class="row">
                                 @foreach ($programs as $program)
-                                    <div class="col-md-4 col-12" style="height: 300px">
+                                    <div class="col-md-4 col-12">
                                         <div class="card">
                                             <div class="card-content">
                                                 <img src="{{ asset('/storage/images/program/'.$program->gambarProgram->nama) }}" class="card-img-top img-fluid"
